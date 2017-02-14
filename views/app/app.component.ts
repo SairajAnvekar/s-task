@@ -5,7 +5,7 @@ import {Component} from '@angular/core';
   template: `
     <alert type="info">ng2-bootstrap hello world!</alert>
 	doing fresh start 	wellcome to angular 2 1
-
+ testing  angular 2
       
   `,
 })

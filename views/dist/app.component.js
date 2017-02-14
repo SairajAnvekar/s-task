@@ -26,7 +26,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "\n    <alert type=\"info\">ng2-bootstrap hello world!</alert>\n\tdoing fresh start \twellcome to angular 2 1\n\n      \n  ",
+        template: "\n    <alert type=\"info\">ng2-bootstrap hello world!</alert>\n\tdoing fresh start \twellcome to angular 2 1\n testing  angular 2\n      \n  ",
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
