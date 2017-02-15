@@ -19,9 +19,14 @@ app.get('/', function(request, response) {
 });
 
 
-app.get('/test', function(req, res, next) {  
+app.get('/home', function(req, res, next) {  
      res.render('index');
 });
+
+app.get('/home/*', function(req, res, next) {  
+     res.render('index');
+});
+
 
 
 

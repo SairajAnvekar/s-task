@@ -9,6 +9,8 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var platform_browser_1 = require("@angular/platform-browser");
 var ng2_bootstrap_1 = require("ng2-bootstrap");
+var router_1 = require("@angular/router");
+var dashboard_component_1 = require("./component/dashboard.component");
 var app_component_1 = require("./app.component");
 var AppModule = (function () {
     function AppModule() {
@@ -17,12 +19,19 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        declarations: [app_component_1.AppComponent],
+        declarations: [app_component_1.AppComponent, dashboard_component_1.DashboardComponent],
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             ng2_bootstrap_1.AlertModule.forRoot(),
-            ng2_bootstrap_1.DatepickerModule.forRoot()
+            ng2_bootstrap_1.DatepickerModule.forRoot(),
+            router_1.RouterModule.forRoot([
+                { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+                {
+                    path: 'dashboard',
+                    component: dashboard_component_1.DashboardComponent
+                },
+            ])
         ],
         providers: [],
         bootstrap: [app_component_1.AppComponent]

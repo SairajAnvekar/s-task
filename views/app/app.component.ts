@@ -2,12 +2,7 @@ import {Component} from '@angular/core';
 
 @Component({
   selector: 'my-app',
-  template: `
-    <alert type="info">ng2-bootstrap hello world!</alert>
-	doing fresh start 	wellcome to angular 2 1
- testing  angular 2
-      
-  `,
+  templateUrl: 'views/app/appComponents.html',
 })
 export class AppComponent {
   public dt:Date = new Date();
