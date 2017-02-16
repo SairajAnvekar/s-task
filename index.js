@@ -1,5 +1,9 @@
 var express = require('express');
+var mongoose	= 	require('mongoose');
 var app = express();
+
+var Task		= 	require('./app/models/tasks.js');
+mongoose.connect(process.env.MONGODB||'mongodb://localhost/projectManagement');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -23,10 +27,17 @@ app.get('/home', function(req, res, next) {
      res.render('index');
 });
 
-app.get('/home/*', function(req, res, next) {  
+app.get('/home/dashboard', function(req, res, next) {  
      res.render('index');
 });
 
+app.get('/tasks',function(req, res, next){
+  Task.find({},function(err, user) {	 
+      res.json({"data":user});
+      
+  });
+
+});
 
 
 
