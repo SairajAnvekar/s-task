@@ -11,7 +11,10 @@ var platform_browser_1 = require("@angular/platform-browser");
 var ng2_bootstrap_1 = require("ng2-bootstrap");
 var router_1 = require("@angular/router");
 var dashboard_component_1 = require("./component/dashboard.component");
+var project_component_1 = require("./component/project.component");
 var app_component_1 = require("./app.component");
+var http_1 = require("@angular/http");
+var ng2_datetime_picker_1 = require("ng2-datetime-picker");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -19,10 +22,12 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        declarations: [app_component_1.AppComponent, dashboard_component_1.DashboardComponent],
+        declarations: [app_component_1.AppComponent, dashboard_component_1.DashboardComponent, project_component_1.ProjectComponent],
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
+            http_1.HttpModule,
+            ng2_datetime_picker_1.Ng2DatetimePickerModule,
             ng2_bootstrap_1.AlertModule.forRoot(),
             ng2_bootstrap_1.DatepickerModule.forRoot(),
             router_1.RouterModule.forRoot([
@@ -31,10 +36,14 @@ AppModule = __decorate([
                     path: 'dashboard',
                     component: dashboard_component_1.DashboardComponent
                 },
+                {
+                    path: 'project',
+                    component: project_component_1.ProjectComponent
+                },
             ])
         ],
         providers: [],
-        bootstrap: [app_component_1.AppComponent]
+        bootstrap: [app_component_1.AppComponent,]
     })
 ], AppModule);
 exports.AppModule = AppModule;

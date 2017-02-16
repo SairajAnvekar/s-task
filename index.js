@@ -8,6 +8,7 @@ var bodyParser   = require('body-parser');
 var session      = require('express-session');
 var passport     = require('passport');
 var flash        = require('connect-flash');
+
 mongoose.connect(process.env.MONGODB||'mongodb://localhost/projectManagement');
 
 
@@ -50,7 +51,7 @@ app.get('/home', function(req, res, next) {
      res.render('index');
 });
 
-app.get('/home/dashboard', function(req, res, next) {  
+app.get('/home/*', function(req, res, next) {  
      res.render('index');
 });
 
@@ -61,6 +62,8 @@ app.get('/tasks',function(req, res, next){
   });
 
 });
+
+
 
 app.use('/api/',api);
 

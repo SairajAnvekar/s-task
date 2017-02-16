@@ -12,6 +12,8 @@
     // ng2-bootstrap
     'moment': 'node_modules/moment',
     'ng2-bootstrap':              'node_modules/ng2-bootstrap',
+    'ng2-datetime-picker': 'node_modules/ng2-datetime-picker/dist',
+    
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
@@ -21,6 +23,7 @@
     // ng2-bootstrap
     'ng2-bootstrap':              { format: 'cjs', main: 'bundles/ng2-bootstrap.umd.js', defaultExtension: 'js' },
     'moment':                     { main: 'moment.js', defaultExtension: 'js' },
+    'ng2-datetime-picker': {main: 'ng2-datetime-picker.umd.js', defaultExtension: 'js'},
   };
   var ngPackageNames = [
     'common',
