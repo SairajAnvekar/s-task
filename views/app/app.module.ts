@@ -5,11 +5,12 @@ import { DatepickerModule, AlertModule } from 'ng2-bootstrap';
 import { RouterModule }   from '@angular/router';
 import { DashboardComponent }   from './component/dashboard.component';
 import {ProjectComponent }   from './component/project.component';
+import {ProjectDetailComponent }   from './component/project-detail.component';
 import { AppComponent } from './app.component';
 import { HttpModule }    from '@angular/http';
 import { Ng2DatetimePickerModule } from 'ng2-datetime-picker';
 @NgModule({
-  declarations: [AppComponent,DashboardComponent,ProjectComponent],
+  declarations: [AppComponent,DashboardComponent,ProjectComponent,ProjectDetailComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -24,8 +25,12 @@ import { Ng2DatetimePickerModule } from 'ng2-datetime-picker';
         component: DashboardComponent 
       },
       { 
-      path: 'project', 
-      component: ProjectComponent 
+        path: 'project', 
+        component: ProjectComponent 
+      },
+      { 
+        path: 'detail/:id', 
+        component: ProjectDetailComponent 
       },
 
     ])

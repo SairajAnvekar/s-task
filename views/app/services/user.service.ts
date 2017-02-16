@@ -8,7 +8,7 @@ import { Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
 export class UserService {
-private appUrl= 'users';  // URL to web API
+private appUrl= 'api/users';  // URL to web API
 	constructor (private http: Http) {}
       
 	getUsers (): Observable<Project[]> {

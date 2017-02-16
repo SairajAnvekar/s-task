@@ -15,7 +15,7 @@ require("rxjs/Rx");
 var UserService = (function () {
     function UserService(http) {
         this.http = http;
-        this.appUrl = 'users'; // URL to web API
+        this.appUrl = 'api/users'; // URL to web API
     }
     UserService.prototype.getUsers = function () {
         return this.http.get(this.appUrl).map(this.extractData).catch(this.handleError);

@@ -8,7 +8,7 @@ import { Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
 export class SprintService {
-private appUrl= 'sprint';  // URL to web API
+private appUrl= 'api/sprint';  // URL to web API
 	constructor (private http: Http) {}
       
 	getProjects (): Observable<Project[]> {
@@ -17,7 +17,7 @@ private appUrl= 'sprint';  // URL to web API
 	
 	
 	getProjectSprint(projectId:any): Observable<any[]> {
-		return this.http.get(this.appUrl+'/'+projectId).map(this.extractData).catch(this.handleError);
+		return this.http.get(this.appUrl+'/project/'+projectId).map(this.extractData).catch(this.handleError);
 	}
 	
 	

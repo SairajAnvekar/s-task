@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
-var Task = require('../../app/models/tasks.js');
-var Sprint = require('../../app/models/sprint.js');
-var Project		=	require('../../app/models/project.js');
-
+var express 	= require('express');
+var router 		= express.Router();
+var Task		= require('../../app/models/tasks.js');
+var Sprint	    = require('../../app/models/sprint.js');
+var Project		= require('../../app/models/project.js');
+var User		= require('../../app/models/user');
 
 //project apis
 
@@ -42,7 +42,7 @@ router.post('/project',function(req,res){
 		 if (err || !doc) {
             throw 'Error';
         } else {
-            res.json({"data":doc});
+            res.json(doc);
         }		
 	});	
 });
@@ -55,7 +55,7 @@ router.put('/project',function(req,res){
         project.desc=projectData.desc;		
         project.completed=projectData.completed;		
 		project.save(function (err) {		
-			res.json({"data":project});
+			res.json(project);
 		});
 	});	
 });
@@ -64,7 +64,7 @@ router.put('/project',function(req,res){
 
 router.get('/project/:id',function(req,res){
 	Project.find({_id: req.params.id},function(err, doc){	 
-	   res.json({"data":doc});		  
+	   res.json(doc);		  
 	});	
 });
 
@@ -77,7 +77,7 @@ router.delete('/project/:id',function(req,res){
 		  {
             response.status="ok"
 		  }
-		  res.json({"data":response});
+		  res.json(response);
 	  }); 
 });
 
@@ -110,11 +110,11 @@ router.post('/project/addProjectMember',function(req, res, next){
 				"member":member,
 				};
 				Project.find({_id:projectId},function(err, doc) {	
-					res.json({"data":doc});
+					res.json(doc);
 				});			
 			});			
 			else
-				res.json({"data":doc});
+				res.json(doc);
 				
 	
 		
@@ -136,6 +136,47 @@ router.get("/project/projectMembers/:projectId",function(req,res){
 
 
 //end project apis
+
+
+
+//sprint apis
+router.get('/sprint/project/:projectId',function(req,res)
+{
+	Sprint.find({projectId: req.params.projectId},null,{sort:{'_id':-1}},function(err, doc){	 
+		res.json({"data":doc});		  
+	});
+	
+});
+
+router.post('/sprint',function(req,res){
+	console.log(req.body);
+	var sprintData={
+		name:req.body.name,
+		desc:req.body.desc,
+		projectId:req.body.projectId
+	};
+	var sprint=new Sprint(sprintData);
+	sprint.save(function(err,doc){
+		 if (err || !doc) {
+            throw 'Error';
+        } else {
+            res.json({"data":doc});
+        }		
+	});	
+});
+
+//end sprint apis
+
+
+
+//users apis
+router.get('/users',function(req,res){
+	User.find({},function(err, doc){	 
+		res.json({"data":doc});		  
+	});
+});
+//end user api
+
 
 router.get('/',function(req,res,next) {   
     res.json('home');

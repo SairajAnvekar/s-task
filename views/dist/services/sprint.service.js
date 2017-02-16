@@ -16,13 +16,13 @@ var http_2 = require("@angular/http");
 var SprintService = (function () {
     function SprintService(http) {
         this.http = http;
-        this.appUrl = 'sprint'; // URL to web API
+        this.appUrl = 'api/sprint'; // URL to web API
     }
     SprintService.prototype.getProjects = function () {
         return this.http.get(this.appUrl).map(this.extractData).catch(this.handleError);
     };
     SprintService.prototype.getProjectSprint = function (projectId) {
-        return this.http.get(this.appUrl + '/' + projectId).map(this.extractData).catch(this.handleError);
+        return this.http.get(this.appUrl + '/project/' + projectId).map(this.extractData).catch(this.handleError);
     };
     SprintService.prototype.getSprintDetails = function (sprintId) {
         return this.http.get('api/sprint/' + sprintId).map(this.extractData).catch(this.handleError);
