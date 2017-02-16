@@ -1,0 +1,76 @@
+
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+	margin-bottom:20px;
+	height:300px;
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.25);
+}
+
+.text-center {
+    text-align: center !important;
+}
+.card-block {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+.card-title {
+    margin-bottom: 0.75rem;
+}
+.card-text{
+   display: block;
+    display: -webkit-box;
+    max-width: 400px;
+    height: 70.2px;
+    margin: 0 auto;
+    line-height: 1.4;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis
+
+}
+
+.card-img-top {
+    border-top-right-radius: calc(.25rem - 1px);
+    border-top-left-radius: calc(.25rem - 1px);
+	height:200px;
+	
+}
+
+
+.add{
+	 border: 1px solid rgba(0, 0, 0, 0.125);
+	 margin-bottom:15px;
+     background: #E0EEF5;
+     border-radius: 10px;
+     box-shadow: 0 5px 15px 0 rgba(0,0,0,0.25);
+}
+.add > div{
+	margin:10px;	
+	
+}
+.margin-10{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.project-details{
+     background: #E0EEF5;
+
+}
