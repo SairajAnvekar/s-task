@@ -6,9 +6,9 @@
   // map tells the System loader where to look for things
   var map = {
     'app':                        'views/dist', // 'dist',
-    '@angular':                   'node_modules/@angular',
+    '@angular':                   'https://unpkg.com/@angular',
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
-    'rxjs':                       'node_modules/rxjs',
+    'rxjs':                       'https://unpkg.com/rxjs@5.0.1',
     // ng2-bootstrap
     'moment': 'node_modules/moment',
     'ng2-bootstrap':              'node_modules/ng2-bootstrap',
@@ -49,6 +49,7 @@
   var setPackageConfig = System.packageWithIndex ? packIndex : packUmd;
   // Add package entries for angular packages
   ngPackageNames.forEach(setPackageConfig);
+  console.log(packages);
   var config = {
     map: map,
     packages: packages
