@@ -17,16 +17,16 @@ var http_2 = require("@angular/http");
 var TaskService = (function () {
     function TaskService(http) {
         this.http = http;
-        this.heroesUrl = 'tasks'; // URL to web API
+        this.taskUrl = 'api/tasks'; // URL to web API
     }
     /*getTasks():Promise<Task[]> {
      return Promise.resolve(TASKS);
     }*/
     TaskService.prototype.getTaskApi = function (sprintId) {
-        return this.http.get(this.heroesUrl + '/sprint/' + sprintId).map(this.extractData).catch(this.handleError);
+        return this.http.get(this.taskUrl + '/sprint/' + sprintId).map(this.extractData).catch(this.handleError);
     };
     TaskService.prototype.getHeroes1 = function () {
-        return this.http.get(this.heroesUrl)
+        return this.http.get(this.taskUrl)
             .toPromise()
             .then(this.extractData)
             .catch(this.handleError);
@@ -34,7 +34,7 @@ var TaskService = (function () {
     TaskService.prototype.addTask = function (name, _id, pri, desc, type, asignId, start, end) {
         var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
         var options = new http_2.RequestOptions({ headers: headers });
-        return this.http.post('addTask', { name: name, _id: _id, pri: pri, desc: desc, type: type, asignId: asignId, start: start, end: end }, options)
+        return this.http.post(this.taskUrl + '/addTasks', { name: name, _id: _id, pri: pri, desc: desc, type: type, asignId: asignId, start: start, end: end }, options)
             .map(this.extractData)
             .catch(this.handleError);
     };
@@ -46,7 +46,7 @@ var TaskService = (function () {
             .catch(this.handleError);
     };
     TaskService.prototype.deleteTask = function (task_id) {
-        return this.http.delete('task/' + task_id).map(this.extractData).catch(this.handleError);
+        return this.http.delete('api/task/' + task_id).map(this.extractData).catch(this.handleError);
         ;
     };
     TaskService.prototype.updateTaskPosition = function (_id, tid, pos, posOfWorking, posOfStage, posOfProd) {

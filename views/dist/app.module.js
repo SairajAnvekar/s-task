@@ -8,7 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var platform_browser_1 = require("@angular/platform-browser");
-var ng2_bootstrap_1 = require("ng2-bootstrap");
 var router_1 = require("@angular/router");
 var dashboard_component_1 = require("./component/dashboard.component");
 var project_component_1 = require("./component/project.component");
@@ -16,6 +15,10 @@ var project_detail_component_1 = require("./component/project-detail.component")
 var app_component_1 = require("./app.component");
 var http_1 = require("@angular/http");
 var ng2_datetime_picker_1 = require("ng2-datetime-picker");
+var tabs_1 = require("./component/tabs");
+var tab_1 = require("./component/tab");
+var task_component_1 = require("./component/task.component");
+var common_1 = require("@angular/common");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -23,14 +26,12 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        declarations: [app_component_1.AppComponent, dashboard_component_1.DashboardComponent, project_component_1.ProjectComponent, project_detail_component_1.ProjectDetailComponent],
+        declarations: [app_component_1.AppComponent, dashboard_component_1.DashboardComponent, project_component_1.ProjectComponent, project_detail_component_1.ProjectDetailComponent, task_component_1.TaskComponent1, tabs_1.Tabs, tab_1.Tab],
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule,
             ng2_datetime_picker_1.Ng2DatetimePickerModule,
-            ng2_bootstrap_1.AlertModule.forRoot(),
-            ng2_bootstrap_1.DatepickerModule.forRoot(),
             router_1.RouterModule.forRoot([
                 { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
                 {
@@ -45,9 +46,13 @@ AppModule = __decorate([
                     path: 'detail/:id',
                     component: project_detail_component_1.ProjectDetailComponent
                 },
+                {
+                    path: 'sprintDetails/:id',
+                    component: task_component_1.TaskComponent1
+                },
             ])
         ],
-        providers: [],
+        providers: [{ provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy }],
         bootstrap: [app_component_1.AppComponent,]
     })
 ], AppModule);

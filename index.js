@@ -8,6 +8,7 @@ var bodyParser   = require('body-parser');
 var session      = require('express-session');
 var passport     = require('passport');
 var flash        = require('connect-flash');
+var Sprint		   = require('./app/models/sprint.js');
 
 mongoose.connect(process.env.MONGODB||'mongodb://localhost/projectManagement');
 
@@ -64,6 +65,111 @@ app.get('/tasks',function(req, res, next){
 });
 
 
+
+
+
+
+
+
+
+app.post('/updateTaskPos',function(req, res){
+	
+	var sprintId=req.body._id;
+	var pos=req.body.pos;
+	var posWorking=req.body.posOfWorking;
+	var posStage=req.body.posOfStage;
+	var posProd=req.body.posOfProd;
+	
+	var taskId=req.body.tid;
+	var result=[];
+	
+	 Sprint.update({tasks:taskId},{ $pullAll: {tasks: [taskId] }},function(err, doc) {  
+
+		Sprint.update({ _id:sprintId },{$push: {tasks: {$each: [taskId], $position: pos}}},function(err, doc) {
+			
+			result.push({"data":doc});			 
+			Sprint.update({working:taskId},{ $pullAll: {working: [taskId] }},function(err, doc) {			
+				Sprint.update({ _id:sprintId },{$push: {working: {$each: [taskId], $position: posWorking}}},function(err, doc) {
+					result.push({"data":doc});
+					
+					Sprint.update({stage:taskId},{ $pullAll: {stage: [taskId] }},function(err, doc) {  
+						Sprint.update({ _id:sprintId },{$push: {stage: {$each: [taskId], $position: posStage}}},function(err, doc) {
+							result.push({"data":doc});
+						
+						 
+							Sprint.update({prod:taskId},{ $pullAll: {prod: [taskId] }},function(err, doc) {  
+								Sprint.update({ _id:sprintId },{$push: {prod: {$each: [taskId], $position: posProd}}},function(err, doc) {
+									result.push({"data":doc});
+
+									res.json(result);
+								})
+							});								 
+						})
+					});	
+
+				})
+
+			});	
+			
+		})
+			
+	 });	
+	   
+	   
+	   
+
+
+	
+});
+
+
+
+
+
+app.post('/updateTaskPos1',function(req, res){
+	
+	var sprintId=req.body._id;
+	var pos=req.body.pos;
+	var posWorking=req.body.posOfWorking;
+	var posStage=req.body.posOfStage;
+	var posProd=req.body.posOfProd;
+	
+	var taskId=req.body.tid;
+	var result=[];
+	
+	 Sprint.update({tasks:taskId},{ $pullAll: {tasks: [taskId] }},function(err, doc) {  
+
+		Sprint.update({ _id:sprintId },{$push: {tasks: {$each: [taskId], $position: pos}}},function(err, doc) {
+			
+			 result.push({"data":doc});
+			
+		})
+			
+	   });	
+	   
+	    Sprint.update({working:taskId},{ $pullAll: {working: [taskId] }},function(err, doc) {  
+
+		Sprint.update({ _id:sprintId },{$push: {working: {$each: [taskId], $position: posWorking}}},function(err, doc) {
+			
+			 result.push({"data":doc});
+			
+		})
+			
+	   });	
+	   
+	    Sprint.update({stage:taskId},{ $pullAll: {stage: [taskId] }},function(err, doc) {  
+
+		Sprint.update({ _id:sprintId },{$push: {stage: {$each: [taskId], $position: posStage}}},function(err, doc) {
+			
+			  result.push({"data":doc});
+			
+		})
+			
+	   });	
+
+	    res.json(result);
+	
+});
 
 app.use('/api/',api);
 

@@ -129,7 +129,7 @@ router.post('/project/addProjectMember',function(req, res, next){
 router.get("/project/projectMembers/:projectId",function(req,res){
 	projectId=req.params.projectId;
 	Project.find({'_id':projectId},'members',function(err, doc) {	 
-	res.json({"data":doc});		  
+	res.json(doc);		  
 	});
 });
 
@@ -177,6 +177,109 @@ router.get('/users',function(req,res){
 });
 //end user api
 
+
+
+
+//task api
+router.post('/tasks/addTasks',function(req, res){
+	console.log(req.body);
+	var sprintId=req.body._id;
+	var desc=req.body.desc;
+	var type=req.body.type;
+	var asigId=req.body.asignId;
+	var start=req.body.start;
+	var end=req.body.end;
+	TaskObj = {
+		id:req.body._id,
+		priority:req.body.pri,
+		name:req.body.name,
+		description:desc,
+		type:type,
+		asign_to_id:asigId,
+		start:start,
+		end:end,
+	};
+	var task= new Task(TaskObj)
+	task.save(function (err, doc) {
+        if (err || !doc) {
+            throw 'Error';
+        } else {
+            res.json({"data":doc});
+        }
+		 
+		 sprintTask={
+			 taskId:doc._id,
+		 };
+		Sprint.update({_id:sprintId}, {$push: {tasks:doc._id}}, function(err){
+		if(err){
+				console.log(err);
+		}else{
+				console.log("Successfully added");
+		}
+		
+	});
+		
+		
+    });
+});
+
+
+
+
+router.get('/tasks/sprint/:id',function(req,res)
+{
+ Task.find({id: req.params.id},function(err, task) {	 
+	   res.json({"data":task});		  
+	});
+	
+});
+
+
+
+
+
+router.get('/task/:id',function(req,res)
+{
+ Task.find({_id: req.params.id},function(err, user) {	 
+	   res.json({"data":user});	
+
+	   
+	});
+	
+});
+
+
+
+
+router.delete('/task/:id',function(req,res){
+	 Task.remove({_id: req.params.id},function(err, user) {	 	 
+       console.log(req.params.id);
+	   
+	   Sprint.update({tasks:req.params.id},{ $pullAll: {tasks: [req.params.id] }},function(err, user) {		   
+		    
+             
+			Sprint.update({working:req.params.id},{ $pullAll: {working: [req.params.id] }},function(err, task) {
+
+				
+				Sprint.update({stage:req.params.id},{ $pullAll: {stage: [req.params.id] }},function(err, task) {
+
+					Sprint.update({prod:req.params.id},{ $pullAll: {prod: [req.params.id] }},function(err, task) {
+
+						res.json({"data":task});
+
+					});	
+
+				});	
+
+			});	
+				
+
+			
+	   });	  	  
+	});
+});
+
+//end task
 
 router.get('/',function(req,res,next) {   
     res.json('home');

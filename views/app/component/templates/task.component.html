@@ -1,0 +1,253 @@
+
+<h1>{{title}}</h1> 
+
+<div class="row">
+	<div  class="col-md-3 ">
+
+		<div class="s-bgcolor-lightBlue">
+       
+	   <div id="showEvents" ></div>
+		
+		
+		</div>
+
+
+	</div>	
+	<div class="col-md-7 s-bgcolor-lightBlue ">
+<tabs>
+<tab [tabTitle]="'Tasks'">
+	<div>
+
+		<div  class="col-md-12 s-form-type-1 s-border-type-1" >	
+        <fieldset class="form-group row">
+				<legend *ngIf="formName" >{{formName}}</legend>
+				<legend> *Task </legend>
+				<input type="text" class="form-control" placeholder="Task Name" #taskname  (click)="showAdd()">
+			 
+		 </fieldset>
+         <div class="flow-in" [hidden]="activeAdd">
+			<fieldset   class="form-group row">	
+				<div class="col-md-4">	
+					<label for="piority">Piority:</label>
+					<select id="piority" class="form-control" #taskPiority>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					</select>
+				</div>
+				<div class="col-md-4">
+					<label for="job">Type:</label>
+					<select id="job" class="form-control" #taskType>
+					<optgroup label="Devloping">
+					<option value="devloping">Devloping</option>
+					<option value="testing">Testing</option>
+					</optgroup>
+					<optgroup label="Testing">
+					<option value="bug fix">Bug Fix</option>
+					</optgroup>
+					</select> 
+				</div>
+
+				<div class="col-md-4">
+					<label>Asign To </label>  
+					<select  class="form-control" #asign_to_id>
+					<option *ngFor="let member of members; let i = index"  value={{member.userid}} >	
+					{{member.name}}
+					</option>
+					</select>
+					
+                </div>
+
+			</fieldset>
+			
+			<fieldset class="form-group row">                
+				<label >Description:</label>
+				<textarea class="form-control" placeholder="Description of task" #taskDesc></textarea>
+			</fieldset>
+
+			<fieldset class="form-group row">		
+				<div class="col-md-6"> 
+					<label >Start Date</label>
+					<input class="date" [(ngModel)]="startDate"  ng2-datetime-picker   readonly />
+				</div>
+				<div class="col-md-6">
+					<label >End Date</label>
+					<input class="date" [(ngModel)]="endDate"  ng2-datetime-picker   readonly/>
+				</div>
+			</fieldset>
+		</div>
+		
+		<div class="form-group row">
+			<button  class="form-control btn btn-primary s-style1-btn " (click)="add(taskname.value,1,taskPiority.value,taskDesc.value,taskType.value,asign_to_id.value,startDate,endDate); taskname.value='' ">
+			Add
+			</button>
+			<button  [hidden]="activeAdd" class="btn btn-primary form-control" (click)="cancel()" >Cancel</button>
+
+		</div>
+
+		</div>
+	</div>
+
+		
+<div class="">  
+  <div class="panel-group list-type1" id="accordion">
+    <div  *ngFor="let task of tasks; let i = index"  class="panel transparent ">
+      <div class="list ">
+    
+          <strong><a (click)="onSelect(task)" data-toggle="collapse" data-parent="#accordion" href="#{{task._id}}  ">{{task.name}}</a></strong>
+           <span class="actions"> <span class="fa fa-trash fa-2x"  (click)="delete(task); $event.stopPropagation()" aria-hidden="true"></span> </span>
+		<div class="c100 small p{{task.progress}}">
+				<span>{{task.progress}}%</span>
+				<div class="slice">
+					<div class="bar"></div>
+					<div class="fill"></div>
+				</div>
+		</div>
+      </div>
+      <div id="{{task._id}}" class="collapse ">
+        <div class="panel-body task-details">
+		<div *ngIf="selectedTask" class="task-content"> 
+			
+			<div class="row  rwo-2">
+				<div class="col-md-5">
+				Created By <br>
+				Priority:{{selectedTask.priority}}<br>
+				Status:{{selectedTask.status}}<br>
+				</div>
+				<div class="col-md-5">
+				Asign To:{{selectedTask.priority}}<br>
+				</div>
+			</div>
+
+			<div class="row row-3">
+				<div class="col-md-12">
+				Description				
+					<textarea [(ngModel)]="selectedTask.description"  class="form-control" id="textarea" name="textarea"></textarea>
+				</div>
+			</div>
+					
+			<div class="row row-4">
+				<div class="col-md-3">
+					<span class="textLable"> Status</span>
+					<select  class="form-control" [(ngModel)]="selectedTask.status">
+					<option value="not started">Not Started</option>
+					<option value="started">Started</option>
+					<option value="completed">completed</option>
+					</select>
+				</div>
+				<div class="col-md-2">
+				Progress
+				 <input type="text" class="form-control" [(ngModel)]="selectedTask.progress"  max="100">
+				
+				</div>	
+				<div class="col-md-2">
+					<label for="type">Piority:</label>
+					<select id="type" name="field4"  class="form-control" [(ngModel)]="selectedTask.priority">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					</select>				
+				</div>
+
+
+				<div class="col-md-5">
+					<label>Asign To </label>  
+					<select  class="form-control" [(ngModel)]="selectedTask.asign_to_id">
+					<option *ngFor="let member of members; let i = index"  value={{member.userid}} >	
+					{{member.name}}
+					</option>
+					</select>
+					
+                </div>
+
+				
+			</div>
+			   <span (click)="updateTask('1')"> <button class="btn btn-primary"> Update </button></span>
+			
+			<div  class="comment-block">			
+				<div class="comments" *ngFor="let comment of selectedTask.comments; let i = index"   >
+			
+				{{comment.comment}}
+				
+				</div>
+				<input type="text" #comment>
+				<span (click)="addComment(comment.value)"> <button class="btn btn-primary"> post </button></span>
+			</div>	
+			</div>
+		     <strong><a  class="btn btn-primary pull-right" data-toggle="collapse" data-parent="#accordion" href="#{{task._id}}  ">Close</a></strong>
+		
+		</div>
+      </div>
+    </div>
+
+  
+  </div> 
+</div>
+    
+
+</tab>
+	<tab tabTitle="Board">
+
+<div class="row board row-eq-height">
+		<div class="col-md-3" >
+		<h2 class="board-heading" > Tasks</h2>
+			<div class="taskslist " id="tasks" > 
+				<li *ngFor="let task of sprintTask; let i = index"   >
+				<div *ngIf="mapTasks[task]"  > <div class="pin"></div><div class="stickyNote"><span class="badge">{{i+1}}</span> {{mapTasks[task].name}}	 <input  class='tid' type="hidden"  value={{mapTasks[task]._id}}/></div></div>	
+				</li>		
+			</div>
+		</div>
+		<div class="col-md-3" >
+		<h2 class="board-heading" > Working</h2>
+		<div   class="taskslist "  id="workingTask"> 
+			<li *ngFor="let task of workingTask; let i = index"   >
+			<div *ngIf="mapTasks[task]" class="stickyNote" ><span class="badge">{{i+1}}</span> {{mapTasks[task].name}} <br>{{mapTasks[task].desc}}		 <input  class='tid' type="hidden"  value={{mapTasks[task]._id}}/></div>	
+		</div>
+		</div>
+		
+		<div class="col-md-3" >
+			<h2 class="board-heading"> Stage</h2>
+			<div   class="taskslist "   id="stageTask" > 
+				<li *ngFor="let task of stageTask; let i = index"   >
+				<div *ngIf="mapTasks[task]" class="stickyNote" > <span class="badge">{{i+1}}</span> {{mapTasks[task].name}}	 <input  class='tid' type="hidden"  value={{mapTasks[task]._id}}/></div>	
+			</div>
+		</div>
+		
+		<div class="col-md-3" >
+			<h2 class="board-heading"> Production</h2>
+			<div  class="taskslist "    id="prodTask" > 
+				<li *ngFor="let task of prodTask; let i = index"   >
+				<div *ngIf="mapTasks[task]" class="stickyNote" > <span class="badge">{{i+1}}</span> {{mapTasks[task].name}}	 <input  class='tid' type="hidden"  value={{mapTasks[task]._id}}/></div>	
+			</div>
+		</div>
+		</div>
+	</tab>
+</tabs>
+</div>
+<div class="col-md-2 ">
+	<div class="s-bgcolor-lightBlue">
+				calender
+		</div>
+
+</div>
+
+</div>
+
+<div class=" col-md-4">
+	
+	<!--<ul class="tasks"  [dragula]='"task"'   [dragulaModel]='sprintTask'>
+      <li *ngFor="let task of sprintTask; let i = index"  >
+       <div *ngIf="mapTasks[task]"> <span class="badge">{{i+1}}</span> {{mapTasks[task].name}} {{mapTasks[task].desc}}{{mapTasks[task].priority}} 	 <input  class='tid' type="hidden"  value={{mapTasks[task]._id}}/></div>	
+      </li>
+    </ul>-->
+</div>
+
+<div class="col-md-4">
+<div id='calendar'></div>
+</div>
+
+
+
+<hr>
