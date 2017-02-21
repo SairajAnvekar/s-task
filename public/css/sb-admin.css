@@ -223,3 +223,18 @@ ul.alert-dropdown {
 .panel-yellow > a:hover {
     color: #df8a13;
 }
+
+
+
+
+@media  (max-width: 767px)  {
+   .desktop-menu{
+       display:none;
+   }
+}
+
+@media  (min-width: 768px)  {
+   .mobile-menu{
+       visibility: hidden;
+   }
+}

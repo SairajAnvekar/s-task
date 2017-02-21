@@ -44,7 +44,7 @@ import { DragulaModule } from 'ng2-dragula/ng2-dragula';
     ])
 
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [],
   bootstrap: [AppComponent,]
 })
 
