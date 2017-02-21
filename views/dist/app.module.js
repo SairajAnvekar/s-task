@@ -19,6 +19,7 @@ var tabs_1 = require("./component/tabs");
 var tab_1 = require("./component/tab");
 var task_component_1 = require("./component/task.component");
 var common_1 = require("@angular/common");
+var ng2_dragula_1 = require("ng2-dragula/ng2-dragula");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -32,6 +33,7 @@ AppModule = __decorate([
             forms_1.FormsModule,
             http_1.HttpModule,
             ng2_datetime_picker_1.Ng2DatetimePickerModule,
+            ng2_dragula_1.DragulaModule,
             router_1.RouterModule.forRoot([
                 { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
                 {

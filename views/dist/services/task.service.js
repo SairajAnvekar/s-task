@@ -52,7 +52,7 @@ var TaskService = (function () {
     TaskService.prototype.updateTaskPosition = function (_id, tid, pos, posOfWorking, posOfStage, posOfProd) {
         var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
         var options = new http_2.RequestOptions({ headers: headers });
-        return this.http.post('updateTaskPos', { _id: _id, tid: tid, pos: pos, posOfWorking: posOfWorking, posOfStage: posOfStage, posOfProd: posOfProd }, options)
+        return this.http.post('api/task/updateTaskPos', { _id: _id, tid: tid, pos: pos, posOfWorking: posOfWorking, posOfStage: posOfStage, posOfProd: posOfProd }, options)
             .map(this.extractData)
             .catch(this.handleError);
     };

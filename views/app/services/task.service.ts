@@ -58,7 +58,7 @@ private taskUrl = 'api/tasks';  // URL to web API
 	updateTaskPosition (_id: string ,tid: string, pos:number,posOfWorking:any,posOfStage:any,posOfProd:any): Observable<Task> {
 		let headers = new Headers({ 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: headers });     
-		return this.http.post('updateTaskPos', {_id ,tid,pos,posOfWorking,posOfStage,posOfProd}, options)
+		return this.http.post('api/task/updateTaskPos', {_id ,tid,pos,posOfWorking,posOfStage,posOfProd}, options)
 				.map(this.extractData)
 			.catch(this.handleError);
 	}

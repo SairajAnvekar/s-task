@@ -11,12 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var task_service_1 = require("../services/task.service");
 var user_service_1 = require("../services/user.service");
+var ng2_dragula_1 = require("ng2-dragula/ng2-dragula");
 var project_service_1 = require("../services/project.service");
 var sprint_service_1 = require("../services/sprint.service");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 var TaskComponent1 = (function () {
-    function TaskComponent1(taskService, sprintService, userService, projectService, route, location) {
+    function TaskComponent1(dragulaService, taskService, sprintService, userService, projectService, route, location) {
+        var _this = this;
+        this.dragulaService = dragulaService;
         this.taskService = taskService;
         this.sprintService = sprintService;
         this.userService = userService;
@@ -30,11 +33,33 @@ var TaskComponent1 = (function () {
         this.stageTask = [];
         this.prodTask = [];
         this.activeAdd = true;
+        this.calendarOptions = {
+            fixedWeekCount: false,
+            aspectRatio: 1,
+            defaultDate: new Date(),
+            editable: true,
+            eventLimit: true,
+            events: {
+                url: 'http://localhost:3000/scalender/sprint/58a00ec750663108341e99c3qqq',
+            },
+            eventDrop: function (event, delta) {
+                alert(event + ' was moved ' + delta + ' days\n' +
+                    '(should probably update your database)');
+                console.log("evenr");
+                console.log(event);
+            },
+        };
         this.task1 = {
             id: 1,
             name: 'Build App',
             piority: 1
         };
+        dragulaService.dropModel.subscribe(function (value) {
+            _this.onDropModel(value.slice(1));
+        });
+        dragulaService.drop.subscribe(function (value) {
+            //let [bagName, e, el] = value;
+        });
     }
     TaskComponent1.prototype.onSelect = function (task) {
         this.selectedTask = task;
@@ -224,9 +249,10 @@ TaskComponent1 = __decorate([
         styleUrls: [
             'views/app/component/templates/css/style.css',
         ],
+        viewProviders: [ng2_dragula_1.DragulaService],
         providers: [task_service_1.TaskService, user_service_1.UserService, sprint_service_1.SprintService, project_service_1.ProjectService]
     }),
-    __metadata("design:paramtypes", [task_service_1.TaskService, sprint_service_1.SprintService, user_service_1.UserService, project_service_1.ProjectService, router_1.ActivatedRoute, common_1.Location])
+    __metadata("design:paramtypes", [ng2_dragula_1.DragulaService, task_service_1.TaskService, sprint_service_1.SprintService, user_service_1.UserService, project_service_1.ProjectService, router_1.ActivatedRoute, common_1.Location])
 ], TaskComponent1);
 exports.TaskComponent1 = TaskComponent1;
 //# sourceMappingURL=task.component.js.map

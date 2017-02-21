@@ -4,13 +4,11 @@ import { TaskService } from '../services/task.service';
 import { UserService } from '../services/user.service';
 import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
-
+import { DragulaService } from 'ng2-dragula/ng2-dragula';
 import { ProjectService } from '../services/project.service';
 import { SprintService } from '../services/sprint.service';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
-
-
 
 @Component({
   selector: 'my-tasks1',
@@ -20,7 +18,7 @@ import { Location }                 from '@angular/common';
     ],	
 	
 
-  
+  	viewProviders: [DragulaService],
     providers: [TaskService,UserService,SprintService,ProjectService]
 })
 export class TaskComponent1 implements OnInit , AfterViewInit{
@@ -38,6 +36,22 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 	activeAdd=true;
     formName:string;
    	
+	calendarOptions:Object = {      
+        fixedWeekCount : false,
+				aspectRatio: 1,			
+        defaultDate: new Date(),
+        editable: true,
+        eventLimit: true, // allow "more" link when too many events
+        events: {
+         url: 'http://localhost:3000/scalender/sprint/58a00ec750663108341e99c3qqq',
+				},
+				eventDrop: function (event:any, delta:any) {
+            alert(event + ' was moved ' + delta + ' days\n' +
+                '(should probably update your database)');
+								console.log("evenr");
+									console.log(event);
+        },
+      };
 
 	task1: Task ={
 					id: 1,
@@ -51,9 +65,18 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 			this.selectedTask = task;
 		}
 
-    public constructor(private taskService:TaskService,private sprintService: SprintService,private userService: UserService, private projectService:ProjectService, private route: ActivatedRoute,private location: Location) {
+    public constructor(private dragulaService:DragulaService,private taskService:TaskService,private sprintService: SprintService,private userService: UserService, private projectService:ProjectService, private route: ActivatedRoute,private location: Location) {
 	  
+		dragulaService.dropModel.subscribe((value:any) => {
+		this.onDropModel(value.slice(1));
+
+		});
+		
+		dragulaService.drop.subscribe((value:any) => {
+		//let [bagName, e, el] = value;
 	
+		});
+		
 	
 	
   }
@@ -311,7 +334,6 @@ console.log(this.sprint)
  		return formatedDate;
 	} 
 
-	
 	
 }
 

@@ -13,6 +13,7 @@ import {Tabs} from './component/tabs';
 import {Tab} from './component/tab';
 import { TaskComponent1 } from './component/task.component';
 import {LocationStrategy, HashLocationStrategy}  from '@angular/common';
+import { DragulaModule } from 'ng2-dragula/ng2-dragula';
 @NgModule({
   declarations: [AppComponent,DashboardComponent,ProjectComponent,ProjectDetailComponent,TaskComponent1,Tabs,Tab],
   imports: [
@@ -20,6 +21,7 @@ import {LocationStrategy, HashLocationStrategy}  from '@angular/common';
     FormsModule,
     HttpModule,
     Ng2DatetimePickerModule,
+     DragulaModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
       { 
