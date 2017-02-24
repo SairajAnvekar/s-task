@@ -14,7 +14,7 @@
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
 	margin-bottom:20px;
-	height:300px;
+	height:333px;
     box-shadow: 0 5px 15px 0 rgba(0,0,0,0.25);
 }
 
@@ -73,4 +73,10 @@
 .project-details{
      background: #E0EEF5;
 
+}
+
+@media (min-width: 1200px){
+    .col-lg-2 {
+        width: 20.66666667%;
+    }
 }

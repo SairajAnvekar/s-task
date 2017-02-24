@@ -25,11 +25,13 @@
 				</div>					
 			</div>
 			<div class="col-sm-12 form-group">
-				<button class="btn btn-primary form-control" (click)="create(name.value,desc.value,starDate,endDate); name.value='';desc.value='' ">
-				Add
-				</button>
-				<div class="margin-10" [hidden]="activeAddDetails"  >
-					<button class="btn btn-primary form-control" (click)="cancel()" >
+				<div class="col-md-4">
+					<button class="cbtn  btn-4 btn-4a " (click)="create(name.value,desc.value,starDate,endDate); name.value='';desc.value='' ">
+					Add
+					</button>
+				</div>
+				<div class="margin-10 col-md-4" [hidden]="activeAddDetails"  >
+					<button class="cbtn btn-4 btn-4a" (click)="cancel()" >
 						Cancel
 					</button>
 				</div>
@@ -46,7 +48,7 @@
 
 <div class="row">
 
-<div class="col-sm-2 col-lg-2 "  *ngFor="let project of projects"   >
+<div class="col-sm-2 col-lg-3 "  *ngFor="let project of projects"   >
 	<div class=" card">		 
 		<div  (click)="deleteProject(project._id)" style="margin-left: 92%"> <i  class="fa fa-times-circle fa-2x" aria-hidden="true"  aria-hidden="true"></i></div>
 			
@@ -59,12 +61,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="card-block text-center" (click)="onSelect(project)">		
+		<div class="card-block text-center" >		
 			<h4 class="card-title"> <strong>{{project.name}}</strong></h4>
 			<p class="card-text">{{project.desc}}</p>		
-			<div>
-				<p>2 <strong>Sprint</strong></p>
-			</div>		
+			<button class="cbtn btn-4 btn-4a icon-arrow-right" (click)="onSelect(project)" >View</button>		
 		</div>
 	</div>
 </div>	

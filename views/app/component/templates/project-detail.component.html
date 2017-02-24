@@ -38,7 +38,7 @@
 			</div>
 			<div class=" form-group row">  
              
-			 	<button  class="btn btn-primary" (click)="update(project)"> Update</button>
+			 	<button  class="cbtn btn-4 btn-4a" (click)="update(project)"> Update</button>
 
 			</div>
 			</div>
@@ -66,7 +66,7 @@
 					</div>					
 				</div>
 				<div class="row">
-					<button class="btn btn-primary form-control" (click)="create(name.value,desc.value)">	Add	</button>
+					<button class="cbtn btn-4 btn-4a" (click)="create(name.value,desc.value)">	Add	</button>
 				</div>
 
 			</div>
@@ -79,7 +79,7 @@
 
 
 <div class="row">
-	<div class="col-sm-2 col-lg-2 " *ngFor="let sprint of sprints"   >
+	<div class="col-sm-2 col-lg-3 " *ngFor="let sprint of sprints"   >
 		<div class=" card">
 
 			<div  style="margin-left: 92%" (click)="deleteSprint(sprint._id)"> <i  class="fa fa-times-circle fa-2x" aria-hidden="true"  aria-hidden="true"></i></div>
@@ -90,9 +90,10 @@
 					<div class="fill"></div>
 				</div>
 			</div>
-			<div class="card-block text-center" (click)="onSelect(sprint)" >
+			<div class="card-block text-center"  >
 			<h4 class="card-title"> <strong>{{sprint.name}}</strong></h4>
-			<p class="card-text">{{sprint.desc}}</p>		
+			<p class="card-text">{{sprint.desc}}</p>
+			<button class="cbtn btn-4 btn-4a icon-arrow-right" (click)="onSelect(sprint)" >View</button>		
 			</div>
 		</div>
 	</div>	
