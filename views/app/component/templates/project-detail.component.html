@@ -78,12 +78,12 @@
 </div>
 
 
-<div class="row">
-	<div class="col-sm-2 col-lg-3 " *ngFor="let sprint of sprints"   >
+<div class="row tiles">
+	<div class="col-sm-2 col-lg-2 " *ngFor="let sprint of sprints"   >
 		<div class=" card">
 
 			<div  style="margin-left: 92%" (click)="deleteSprint(sprint._id)"> <i  class="fa fa-times-circle fa-2x" aria-hidden="true"  aria-hidden="true"></i></div>
-			<div class="{{progress}}{{percentage}} a-margin"  >
+			<div class="{{progress}}{{percentage}} small a-margin"  >
 				<span>50% </span>
 				<div class="slice">
 					<div class="bar"></div>

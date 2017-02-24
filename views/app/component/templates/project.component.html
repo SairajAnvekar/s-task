@@ -46,14 +46,14 @@
 </div>
 		
 
-<div class="row">
+<div class="row tiles">
 
-<div class="col-sm-2 col-lg-3 "  *ngFor="let project of projects"   >
+<div class="col-sm-2 col-lg-2 "  *ngFor="let project of projects"   >
 	<div class=" card">		 
 		<div  (click)="deleteProject(project._id)" style="margin-left: 92%"> <i  class="fa fa-times-circle fa-2x" aria-hidden="true"  aria-hidden="true"></i></div>
 			
 		<div  class="a-margin">
-			<div class="{{progress}} p{{project.completed}} "  >
+			<div class="{{progress}} p{{project.completed}}  small"  >
 				<span>{{project.completed}}%</span>
 				<div class="slice">
 					<div class="bar"></div>
