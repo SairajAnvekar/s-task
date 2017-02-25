@@ -142,7 +142,7 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 					this.getTasksOb();
 					this.getSprintDetails(this.sprint._id);
 					this.getMembers(this.sprint.projectId);
-					this.calendarOptions['events'].url='http://localhost:5000/api/task/scalender/sprint/'+this.sprint._id;
+					this.calendarOptions['events'].url='/api/task/scalender/sprint/'+this.sprint._id;
 					console.log(this.calendarOptions);
 					$('#showEvents').fullCalendar(this.calendarOptions);
 					},

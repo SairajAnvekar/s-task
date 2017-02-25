@@ -110,7 +110,7 @@ var TaskComponent1 = (function () {
                 _this.getTasksOb();
                 _this.getSprintDetails(_this.sprint._id);
                 _this.getMembers(_this.sprint.projectId);
-                _this.calendarOptions['events'].url = 'http://localhost:5000/api/task/scalender/sprint/' + _this.sprint._id;
+                _this.calendarOptions['events'].url = '/api/task/scalender/sprint/' + _this.sprint._id;
                 console.log(_this.calendarOptions);
                 $('#showEvents').fullCalendar(_this.calendarOptions);
             }, function (error) { return _this.errorMessage = error; });
