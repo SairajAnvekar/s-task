@@ -244,4 +244,4 @@ TaskComponent1 = __decorate([
     __metadata("design:paramtypes", [ng2_dragula_1.DragulaService, task_service_1.TaskService, sprint_service_1.SprintService, user_service_1.UserService, project_service_1.ProjectService, router_1.ActivatedRoute, common_1.Location])
 ], TaskComponent1);
 exports.TaskComponent1 = TaskComponent1;
-//# sourceMappingURL=task.component.js.map
+//# sourceMappingURL=task.component - Copy.js.map

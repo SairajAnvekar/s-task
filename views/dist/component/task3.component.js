@@ -39,7 +39,7 @@ var TaskComponent1 = (function () {
             fixedWeekCount: false,
             aspectRatio: 1,
             defaultDate: new Date(),
-            editable: false,
+            editable: true,
             eventLimit: true,
             events: {
                 url: 'http://localhost:5000/scalender/sprint/58a00ec750663108341e99c3qqq',
@@ -82,6 +82,9 @@ var TaskComponent1 = (function () {
             console.log(task);
         }, function (error) { return _this.errorMessage = error; });
     };
+    TaskComponent1.prototype.getTasks = function () {
+        //	this.taskService.getTasks().then(tasks => this.tasks = tasks);;
+    };
     TaskComponent1.prototype.ngAfterViewInit = function () {
         console.log("this.sprint");
         console.log(this.sprintId);
@@ -90,12 +93,15 @@ var TaskComponent1 = (function () {
             // console.log("100ms after ngAfterViewInit ");
             //	$('#calendar').fullCalendar(this.calendarOptions);
         }, 100);
+        //	$('#showEvents').fullCalendar(this.calendarOptions);
     };
     TaskComponent1.prototype.ngOnInit = function () {
         var _this = this;
         var id;
+        console.log("testin 124556");
         this.route.params.forEach(function (params) {
             id = params['id'];
+            console.log("testin -------" + id);
             _this.sprintService.getSprintDetails(id).subscribe(function (sprint) {
                 _this.sprint = sprint[0];
                 _this.sprintId = sprint[0]._id;
@@ -109,6 +115,17 @@ var TaskComponent1 = (function () {
                 $('#showEvents').fullCalendar(_this.calendarOptions);
             }, function (error) { return _this.errorMessage = error; });
         });
+        console.log("new ===============data");
+        console.log(this.sprint);
+        //this.getTasksOb();	
+        //	this.getSprintDetails(this.sprint._id);
+        //	this.getMembers();
+    };
+    /// using promise call
+    TaskComponent1.prototype.getHeroes2 = function () {
+        var _this = this;
+        this.taskService.getHeroes1()
+            .then(function (tasks) { return _this.tasks = tasks; }, function (error) { return _this.errorMessage = error; });
     };
     TaskComponent1.prototype.getTasksOb = function () {
         var _this = this;
@@ -244,4 +261,4 @@ TaskComponent1 = __decorate([
     __metadata("design:paramtypes", [ng2_dragula_1.DragulaService, task_service_1.TaskService, sprint_service_1.SprintService, user_service_1.UserService, project_service_1.ProjectService, router_1.ActivatedRoute, common_1.Location])
 ], TaskComponent1);
 exports.TaskComponent1 = TaskComponent1;
-//# sourceMappingURL=task.component.js.map
+//# sourceMappingURL=task3.component.js.map

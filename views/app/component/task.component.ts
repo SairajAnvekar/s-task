@@ -1,15 +1,15 @@
-import { Component , OnInit,Input,AfterViewInit} from '@angular/core';
-import {Task} from '../models/task';
-import { TaskService } from '../services/task.service';
-import { UserService } from '../services/user.service';
-import { Http, Response } from '@angular/http';
-import { Headers, RequestOptions } from '@angular/http';
-import { DragulaService } from 'ng2-dragula/ng2-dragula';
-import { ProjectService } from '../services/project.service';
-import { SprintService } from '../services/sprint.service';
-import { ActivatedRoute, Params }   from '@angular/router';
-import { Location }                 from '@angular/common';
-import * as $ from 'jquery';
+import { Component , OnInit,Input,AfterViewInit} 	from '@angular/core';
+import {Task}										from '../models/task';
+import { TaskService } 								from '../services/task.service';
+import { UserService } 								from '../services/user.service';
+import { Http, Response }							from '@angular/http';
+import { Headers, RequestOptions }					from '@angular/http';
+import { DragulaService } 							from 'ng2-dragula/ng2-dragula';
+import { ProjectService } 							from '../services/project.service';
+import { SprintService } 							from '../services/sprint.service';
+import { ActivatedRoute, Params }  					from '@angular/router';
+import { Location }                 				from '@angular/common';
+import * as $ 										from 'jquery';
 import 'fullcalendar';
 
 @Component({
@@ -18,8 +18,6 @@ import 'fullcalendar';
    styleUrls: [
         'views/app/component/templates/css/style.css',      
     ],	
-	
-
   	viewProviders: [DragulaService],
     providers: [TaskService,UserService,SprintService,ProjectService]
 })
@@ -40,20 +38,20 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 
 
 	calendarOptions:Object = {      
-        fixedWeekCount : false,
-				aspectRatio: 1,			
-        defaultDate: new Date(),
-        editable: true,
-        eventLimit: true, // allow "more" link when too many events
-        events: {
-         url: 'http://localhost:5000/scalender/sprint/58a00ec750663108341e99c3qqq',
-				},
-				eventDrop: function (event:any, delta:any) {
-            alert(event + ' was moved ' + delta + ' days\n' +
-                '(should probably update your database)');
-								console.log("evenr");
-									console.log(event);
-        },
+			fixedWeekCount : false,
+			aspectRatio: 1,			
+			defaultDate: new Date(),
+			editable: false,
+			eventLimit: true, // allow "more" link when too many events
+			events: {
+			url: 'http://localhost:5000/scalender/sprint/58a00ec750663108341e99c3qqq',
+			},
+			eventDrop: function (event:any, delta:any) {
+			alert(event + ' was moved ' + delta + ' days\n' +
+			'(should probably update your database)');
+							console.log("evenr");
+								console.log(event);
+			},
       };
    	
 	task1: Task ={
@@ -65,8 +63,8 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 	tasks:Task[]; 
 	selectedTask: any;
 	onSelect(task: Task): void {
-			this.selectedTask = task;
-		}
+		this.selectedTask = task;
+	}
 
     public constructor(private dragulaService:DragulaService,private taskService:TaskService,private sprintService: SprintService,private userService: UserService, private projectService:ProjectService, private route: ActivatedRoute,private location: Location) {
 	  
@@ -106,67 +104,42 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 		
 	}
 	
-	
-	getTasks(): void {
-	//	this.taskService.getTasks().then(tasks => this.tasks = tasks);;
-	}
-  
+
+
 		ngAfterViewInit(){
-   	console.log("this.sprint");
-		 console.log(this.sprintId);
+			console.log("this.sprint");
+			console.log(this.sprintId);
 			console.log(this.sprint);
 			setTimeout(()=>{
 			// console.log("100ms after ngAfterViewInit ");
-		//	$('#calendar').fullCalendar(this.calendarOptions);
+			//	$('#calendar').fullCalendar(this.calendarOptions);
+
+			}, 100);
+
+		}
+		ngOnInit(): void {	
+			var id;			
+			this.route.params.forEach((params: Params) => {
+				id = params['id'];
 			
-		}, 100);
+				this.sprintService.getSprintDetails(id).subscribe(
+					sprint =>{
+						this.sprint=sprint[0];
+						this.sprintId=sprint[0]._id;
+						console.log("data1");
+						console.log(sprint);
+						this.getTasksOb();
+						this.getSprintDetails(this.sprint._id);
+						this.getMembers(this.sprint.projectId);
+						this.calendarOptions['events'].url='/api/task/scalender/sprint/'+this.sprint._id;
+						console.log(this.calendarOptions);
+						$('#showEvents').fullCalendar(this.calendarOptions);
+						},
+					error =>  this.errorMessage = <any>error
+				);
 
-		//	$('#showEvents').fullCalendar(this.calendarOptions);
-		
-		}
-	ngOnInit(): void {		var id;
-
-
-
-
-		console.log("testin 124556");
-		this.route.params.forEach((params: Params) => {
-			id = params['id'];
-			console.log("testin -------"+id);
-			this.sprintService.getSprintDetails(id).subscribe(
-				sprint =>{
-					this.sprint=sprint[0];
-					this.sprintId=sprint[0]._id;
-					console.log("data1");
-					console.log(sprint);
-					this.getTasksOb();
-					this.getSprintDetails(this.sprint._id);
-					this.getMembers(this.sprint.projectId);
-					this.calendarOptions['events'].url='/api/task/scalender/sprint/'+this.sprint._id;
-					console.log(this.calendarOptions);
-					$('#showEvents').fullCalendar(this.calendarOptions);
-					},
-				error =>  this.errorMessage = <any>error
-			);
-
-		});
-		
-console.log("new ===============data")
-console.log(this.sprint)
-		//this.getTasksOb();	
-	//	this.getSprintDetails(this.sprint._id);
-	//	this.getMembers();
-        	
+			});			
 	}
-	
-	/// using promise call
-		getHeroes2() {
-		this.taskService.getHeroes1()
-					 .then(
-					   tasks => this.tasks = tasks,
-					   error =>  this.errorMessage = <any>error);
-		}
-
 	
 	
 	
@@ -232,8 +205,6 @@ console.log(this.sprint)
 				error =>  this.errorMessage = <any>error
 				);			
 	}
-	
-	
 	
 	deleteFromArray(task:any)
 	{
