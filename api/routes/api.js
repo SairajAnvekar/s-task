@@ -332,6 +332,26 @@ router.post('/task/updateTaskPos',function(req, res){
 
 
 
+router.get('/task/scalender/sprint/:id',function(req,res)
+{	
+	Task.aggregate([
+		{$match:{id: req.params.id}},
+		{ $project: {
+			_id:0,
+			id: '$_id',
+			title:'$name',
+			start:1,
+			end:1,
+		}}
+		
+	],function(err,result){
+
+		res.json(result); 
+	});
+
+});
+
+
 
 //end task
 

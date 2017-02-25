@@ -9,6 +9,8 @@ import { ProjectService } from '../services/project.service';
 import { SprintService } from '../services/sprint.service';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
+import * as $ from 'jquery';
+import 'fullcalendar';
 
 @Component({
   selector: 'my-tasks1',
@@ -35,7 +37,8 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 	prodTask: any=[];
 	activeAdd=true;
     formName:string;
-   	
+
+
 	calendarOptions:Object = {      
         fixedWeekCount : false,
 				aspectRatio: 1,			
@@ -43,7 +46,7 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
         editable: true,
         eventLimit: true, // allow "more" link when too many events
         events: {
-         url: 'http://localhost:3000/scalender/sprint/58a00ec750663108341e99c3qqq',
+         url: 'http://localhost:5000/scalender/sprint/58a00ec750663108341e99c3qqq',
 				},
 				eventDrop: function (event:any, delta:any) {
             alert(event + ' was moved ' + delta + ' days\n' +
@@ -52,7 +55,7 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 									console.log(event);
         },
       };
-
+   	
 	task1: Task ={
 					id: 1,
 					name: 'Build App',
@@ -139,7 +142,9 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 					this.getTasksOb();
 					this.getSprintDetails(this.sprint._id);
 					this.getMembers(this.sprint.projectId);
-					
+					this.calendarOptions['events'].url='http://localhost:5000/api/task/scalender/sprint/'+this.sprint._id;
+					console.log(this.calendarOptions);
+					$('#showEvents').fullCalendar(this.calendarOptions);
 					},
 				error =>  this.errorMessage = <any>error
 			);
@@ -196,7 +201,7 @@ console.log(this.sprint)
 																'status':task['status']
 
 								}		
-
+                                    $('#showEvents').fullCalendar( 'refetchEvents' )
 								},
 						   error =>  this.errorMessage = <any>error);	     
 			

@@ -16,6 +16,8 @@ var project_service_1 = require("../services/project.service");
 var sprint_service_1 = require("../services/sprint.service");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
+var $ = require("jquery");
+require("fullcalendar");
 var TaskComponent1 = (function () {
     function TaskComponent1(dragulaService, taskService, sprintService, userService, projectService, route, location) {
         var _this = this;
@@ -40,7 +42,7 @@ var TaskComponent1 = (function () {
             editable: true,
             eventLimit: true,
             events: {
-                url: 'http://localhost:3000/scalender/sprint/58a00ec750663108341e99c3qqq',
+                url: 'http://localhost:5000/scalender/sprint/58a00ec750663108341e99c3qqq',
             },
             eventDrop: function (event, delta) {
                 alert(event + ' was moved ' + delta + ' days\n' +
@@ -108,6 +110,9 @@ var TaskComponent1 = (function () {
                 _this.getTasksOb();
                 _this.getSprintDetails(_this.sprint._id);
                 _this.getMembers(_this.sprint.projectId);
+                _this.calendarOptions['events'].url = 'http://localhost:5000/api/task/scalender/sprint/' + _this.sprint._id;
+                console.log(_this.calendarOptions);
+                $('#showEvents').fullCalendar(_this.calendarOptions);
             }, function (error) { return _this.errorMessage = error; });
         });
         console.log("new ===============data");
@@ -147,6 +152,7 @@ var TaskComponent1 = (function () {
                     'name': task['name'],
                     'status': task['status']
                 };
+                $('#showEvents').fullCalendar('refetchEvents');
             }, function (error) { return _this.errorMessage = error; });
         }
     };

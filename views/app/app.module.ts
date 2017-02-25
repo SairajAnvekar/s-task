@@ -14,8 +14,9 @@ import {Tab} from './component/tab';
 import { TaskComponent1 } from './component/task.component';
 import {LocationStrategy, HashLocationStrategy}  from '@angular/common';
 import { DragulaModule } from 'ng2-dragula/ng2-dragula';
+import {CalendarComponent} from "angular2-fullcalendar/src/calendar/calendar";
 @NgModule({
-  declarations: [AppComponent,DashboardComponent,ProjectComponent,ProjectDetailComponent,TaskComponent1,Tabs,Tab],
+  declarations: [AppComponent,DashboardComponent,ProjectComponent,ProjectDetailComponent,TaskComponent1,Tabs,Tab,CalendarComponent],
   imports: [
     BrowserModule,
     FormsModule,

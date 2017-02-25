@@ -22,6 +22,9 @@
 		'ticky': 'node_modules/ticky',
 		'crossvent': 'node_modules/crossvent/src',
 		'custom-event': 'node_modules/custom-event',
+    'angular2-fullcalendar': 'node_modules/angular2-fullcalendar',
+     'jquery': 'node_modules/jquery',
+     'fullcalendar':'node_modules/fullcalendar',
     
   };
   // packages tells the System loader how to load when no filename and/or no extension
@@ -39,7 +42,10 @@
     'atoa': {main: 'atoa.js', defaultExtension: 'js'},
     'ticky': {main: 'ticky.js', defaultExtension: 'js'},
     'crossvent': {main: 'crossvent.js', defaultExtension: 'js'},
-    'custom-event': {main: 'index.js', defaultExtension: 'js'},
+    'custom-event': {main: 'index.js', defaultExtension: 'js'},    
+    'angular2-fullcalendar': {main: 'calendar.js', defaultExtension: 'js'},
+     'fullcalendar': {main: 'dist/fullcalendar.js', defaultExtension: 'js'},
+   'jquery': {main: 'dist/jquery.js', defaultExtension: 'js'},
   };
   var ngPackageNames = [
     'common',
