@@ -31,5 +31,10 @@ app.post('/signup', passport.authenticate('local-signup', {
 }));
 
 
+ app.get('/logout', function (req, res) {
+        req.logout();
+        res.redirect('/');
+    });
+
 
 }

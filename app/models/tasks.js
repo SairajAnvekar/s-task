@@ -20,6 +20,7 @@ var TaskSchema = new mongoose.Schema({
 	progress:{type: Number,default : 0}, 
 	asign_to_id:{type:String},
 	asign_to_name:{type:String},
+	backgroundColor:{type:String , default : 'blue'},
 	comments:[commentsSchema],
  	
 });

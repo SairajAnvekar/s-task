@@ -62,6 +62,9 @@ var TaskComponent1 = (function () {
         dragulaService.drop.subscribe(function (value) {
             //let [bagName, e, el] = value;
         });
+        this.model = {
+            sex: "female"
+        };
     }
     TaskComponent1.prototype.onSelect = function (task) {
         this.selectedTask = task;
@@ -151,6 +154,7 @@ var TaskComponent1 = (function () {
             };
             console.log("task");
             console.log(task);
+            $('#showEvents').fullCalendar('refetchEvents');
         }, function (error) { return _this.errorMessage = error; });
     };
     TaskComponent1.prototype.delete = function (task) {

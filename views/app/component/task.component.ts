@@ -35,6 +35,7 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 	prodTask: any=[];
 	activeAdd=true;
     formName:string;
+     model:any;
 
 
 	calendarOptions:Object = {      
@@ -76,7 +77,11 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 		dragulaService.drop.subscribe((value:any) => {
 		//let [bagName, e, el] = value;
 	
-		});
+	});
+	
+	 this.model = {
+            sex: "female"
+        };
 		
 	
 	
@@ -174,7 +179,7 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 																'status':task['status']
 
 								}		
-                                    $('#showEvents').fullCalendar( 'refetchEvents' )
+                                    $('#showEvents').fullCalendar( 'refetchEvents' );
 								},
 						   error =>  this.errorMessage = <any>error);	     
 			
@@ -188,9 +193,10 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 					   task  =>{this.mapTasks[task['_id']]={
 															'_id':task['_id'],
 															'name':task['name'],
-															'status':task['status']
-
-							};console.log("task");console.log(task)	},
+															'status':task['status']	};
+															console.log("task");console.log(task);
+															 $('#showEvents').fullCalendar( 'refetchEvents' );
+							},
 					   error =>  this.errorMessage = <any>error);	
 	}
 	

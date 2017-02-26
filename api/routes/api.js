@@ -342,6 +342,7 @@ router.get('/task/scalender/sprint/:id',function(req,res)
 			title:'$name',
 			start:1,
 			end:1,
+			backgroundColor:1,
 		}}
 		
 	],function(err,result){
@@ -426,6 +427,7 @@ router.post('/updateTask',function(req,res){
 		task.priority=reqTask.priority;
 		task.description=reqTask.description;
 		task.asign_to_id=reqTask.asign_to_id;
+		task.backgroundColor=reqTask.backgroundColor;
 		task.save(function (err, updatedTask) {
 		if (err) return handleError(err);
 			res.json({"data":updatedTask});

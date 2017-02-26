@@ -160,9 +160,48 @@
 
 				
 			</div>
+			<div class="row">
+                <div class="col-md-12">
+				<div class="col-md-7">
+					<div class="row">
+						<label > Color</label>						
+					</div>
 
-			
+					<div class="row">
+						<div class="col-md-12" >	
+						<form action="">
 
+
+							
+							<input	type="radio" name="color" id="blue" class="input-hidden"  value="blue" [(ngModel)]="selectedTask.backgroundColor" />
+							<label for="blue">
+								<div class="box cBlue" (click)="selectedTask.backgroundColor='blue'" ></div>
+							</label>
+
+							<input 	type="radio" name="color" id="red" class="input-hidden" value="red" [(ngModel)]="selectedTask.backgroundColor"  />
+							<label for="red">
+								<div  class="box cRed"  (click)="selectedTask.backgroundColor='red'" ></div>
+							</label>
+
+							<input	type="radio" name="color" id="green" class="input-hidden"  value="green" [(ngModel)]="selectedTask.backgroundColor"/>
+							<label for="green">
+								<div class="box cGreen" (click)="selectedTask.backgroundColor='green'"></div> 
+							</label>
+
+							<input	type="radio" name="color" id="orange" class="input-hidden" value="orange" [(ngModel)]="selectedTask.backgroundColor" />
+							<label for="orange">
+							<div class="box cOrange" (click)="selectedTask.backgroundColor='orange'"></div>			
+							</label>
+						</form>
+						</div>					
+					</div>
+				</div>
+				
+
+            </div>
+			</div>
+
+		
 
 			   <span (click)="updateTask('1')"> <button class="sbtn btn-4 btn-4a"> Update </button></span>
 			
@@ -251,4 +290,3 @@
 
 	
 	
-<hr>

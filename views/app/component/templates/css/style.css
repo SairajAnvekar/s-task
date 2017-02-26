@@ -266,3 +266,35 @@ color:#FFF;
    margin: 0px 20px 0px 20px;
 
 }
+
+.box{
+    width:30px;
+    height:30px;
+    display:inline-block;
+}
+
+.cRed{
+    background: red; 
+}
+
+.cBlue{
+    background:blue;    
+}
+
+.cGreen{
+    background:green;
+}
+.cOrange{
+    background: orange
+}
+
+
+.input-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+input[type=radio]:checked + label>div {
+  border: 1px solid #fff;
+  box-shadow: 0 0 3px 3px #090;
+}
