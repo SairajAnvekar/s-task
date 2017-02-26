@@ -12,11 +12,13 @@ import { Ng2DatetimePickerModule } from 'ng2-datetime-picker';
 import {Tabs} from './component/tabs';
 import {Tab} from './component/tab';
 import { TaskComponent1 } from './component/task.component';
+import { ProfileComponent } from './component/profile.component';
 import {LocationStrategy, HashLocationStrategy}  from '@angular/common';
 import { DragulaModule } from 'ng2-dragula/ng2-dragula';
 import {CalendarComponent} from "angular2-fullcalendar/src/calendar/calendar";
+import {CapitalizePipe} 							from './pipe/capitalize.pipe'; 
 @NgModule({
-  declarations: [AppComponent,DashboardComponent,ProjectComponent,ProjectDetailComponent,TaskComponent1,Tabs,Tab,CalendarComponent],
+  declarations: [AppComponent,DashboardComponent,ProjectComponent,ProjectDetailComponent,ProfileComponent,TaskComponent1,Tabs,Tab,CalendarComponent,CapitalizePipe],
   imports: [
     BrowserModule,
     FormsModule,
@@ -24,7 +26,7 @@ import {CalendarComponent} from "angular2-fullcalendar/src/calendar/calendar";
     Ng2DatetimePickerModule,
      DragulaModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+      { path: '', redirectTo: '/project', pathMatch: 'full' },
       { 
         path: 'dashboard', 
         component: DashboardComponent 
@@ -36,6 +38,10 @@ import {CalendarComponent} from "angular2-fullcalendar/src/calendar/calendar";
       { 
         path: 'detail/:id', 
         component: ProjectDetailComponent 
+      },
+       { 
+        path: 'profile', 
+        component: ProfileComponent 
       },
       { 
       path: 'sprintDetails/:id', 

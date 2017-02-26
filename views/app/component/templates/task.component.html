@@ -95,9 +95,9 @@
     <div  *ngFor="let task of tasks; let i = index"  class="panel transparent ">
       <div class="list ">
     
-          <strong><a (click)="onSelect(task)" data-toggle="collapse" data-parent="#accordion" href="#{{task._id}}  ">{{task.name}}</a></strong>
+          <strong><a (click)="onSelect(task)" data-toggle="collapse" data-parent="#accordion" href="#{{task._id}}  ">{{task.name | capitalize }} </a></strong>
            <span class="actions"> <span class="fa fa-trash fa-2x"  (click)="delete(task); $event.stopPropagation()" aria-hidden="true"></span> </span>
-		<div class="c100 small p{{task.progress}}">
+		<div class="c100 font-60 p{{task.progress}}">
 				<span>{{task.progress}}%</span>
 				<div class="slice">
 					<div class="bar"></div>
@@ -160,9 +160,9 @@
 
 				
 			</div>
-			<div class="row">
+			<div class="row  row-5">
                 <div class="col-md-12">
-				<div class="col-md-7">
+				<div class="col-md-5">
 					<div class="row">
 						<label > Color</label>						
 					</div>
@@ -196,6 +196,21 @@
 						</div>					
 					</div>
 				</div>
+
+				<div class="col-md-7">
+                    
+					<div class="col-md-6"> 
+						<label >Start Date</label>
+						<input class="date" [(ngModel)]="selectedTask.start"  ng2-datetime-picker   readonly />
+					</div>
+					<div class="col-md-6">
+						<label >End Date</label>
+						<input class="date" [(ngModel)]="selectedTask.end"  ng2-datetime-picker   readonly/>
+					</div>
+
+				</div>
+
+
 				
 
             </div>
@@ -286,7 +301,7 @@
 <div class="col-md-4">
 <div id='calendar'></div>
 </div>
-<div class="btn btn-primary" (click) ='calenderTest()'> test </div>
+
 
 	
 	

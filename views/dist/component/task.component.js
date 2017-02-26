@@ -243,7 +243,7 @@ TaskComponent1 = __decorate([
             'views/app/component/templates/css/style.css',
         ],
         viewProviders: [ng2_dragula_1.DragulaService],
-        providers: [task_service_1.TaskService, user_service_1.UserService, sprint_service_1.SprintService, project_service_1.ProjectService]
+        providers: [task_service_1.TaskService, user_service_1.UserService, sprint_service_1.SprintService, project_service_1.ProjectService],
     }),
     __metadata("design:paramtypes", [ng2_dragula_1.DragulaService, task_service_1.TaskService, sprint_service_1.SprintService, user_service_1.UserService, project_service_1.ProjectService, router_1.ActivatedRoute, common_1.Location])
 ], TaskComponent1);

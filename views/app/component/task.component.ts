@@ -9,6 +9,7 @@ import { ProjectService } 							from '../services/project.service';
 import { SprintService } 							from '../services/sprint.service';
 import { ActivatedRoute, Params }  					from '@angular/router';
 import { Location }                 				from '@angular/common';
+
 import * as $ 										from 'jquery';
 import 'fullcalendar';
 
@@ -19,7 +20,8 @@ import 'fullcalendar';
         'views/app/component/templates/css/style.css',      
     ],	
   	viewProviders: [DragulaService],
-    providers: [TaskService,UserService,SprintService,ProjectService]
+    providers: [TaskService,UserService,SprintService,ProjectService],
+
 })
 export class TaskComponent1 implements OnInit , AfterViewInit{
 	title="Tasks";	

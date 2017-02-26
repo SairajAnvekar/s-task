@@ -18,8 +18,10 @@ var ng2_datetime_picker_1 = require("ng2-datetime-picker");
 var tabs_1 = require("./component/tabs");
 var tab_1 = require("./component/tab");
 var task_component_1 = require("./component/task.component");
+var profile_component_1 = require("./component/profile.component");
 var ng2_dragula_1 = require("ng2-dragula/ng2-dragula");
 var calendar_1 = require("angular2-fullcalendar/src/calendar/calendar");
+var capitalize_pipe_1 = require("./pipe/capitalize.pipe");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -27,7 +29,7 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        declarations: [app_component_1.AppComponent, dashboard_component_1.DashboardComponent, project_component_1.ProjectComponent, project_detail_component_1.ProjectDetailComponent, task_component_1.TaskComponent1, tabs_1.Tabs, tab_1.Tab, calendar_1.CalendarComponent],
+        declarations: [app_component_1.AppComponent, dashboard_component_1.DashboardComponent, project_component_1.ProjectComponent, project_detail_component_1.ProjectDetailComponent, profile_component_1.ProfileComponent, task_component_1.TaskComponent1, tabs_1.Tabs, tab_1.Tab, calendar_1.CalendarComponent, capitalize_pipe_1.CapitalizePipe],
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
@@ -35,7 +37,7 @@ AppModule = __decorate([
             ng2_datetime_picker_1.Ng2DatetimePickerModule,
             ng2_dragula_1.DragulaModule,
             router_1.RouterModule.forRoot([
-                { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+                { path: '', redirectTo: '/project', pathMatch: 'full' },
                 {
                     path: 'dashboard',
                     component: dashboard_component_1.DashboardComponent
@@ -47,6 +49,10 @@ AppModule = __decorate([
                 {
                     path: 'detail/:id',
                     component: project_detail_component_1.ProjectDetailComponent
+                },
+                {
+                    path: 'profile',
+                    component: profile_component_1.ProfileComponent
                 },
                 {
                     path: 'sprintDetails/:id',

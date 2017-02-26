@@ -148,7 +148,7 @@ color: #000;
 text-decoration: none;
 -moz-border-radius: 28em 11em 11em 10em;
 -webkit-border-radius: 28em 11em 11em 10em;
-border-radius:29em 11em 11em 10em;
+border-radius: 72em 49em 46em 46em;
 transition: all .2s ease-in-out;
 height:50px;
 }
@@ -297,4 +297,8 @@ color:#FFF;
 input[type=radio]:checked + label>div {
   border: 1px solid #fff;
   box-shadow: 0 0 3px 3px #090;
+}
+
+.panel-body.task-details .row { 
+    margin-top: 10px;
 }

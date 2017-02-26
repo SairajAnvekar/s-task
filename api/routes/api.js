@@ -428,6 +428,8 @@ router.post('/updateTask',function(req,res){
 		task.description=reqTask.description;
 		task.asign_to_id=reqTask.asign_to_id;
 		task.backgroundColor=reqTask.backgroundColor;
+		task.start=reqTask.start;
+		task.end=reqTask.end;
 		task.save(function (err, updatedTask) {
 		if (err) return handleError(err);
 			res.json({"data":updatedTask});
