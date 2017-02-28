@@ -240,18 +240,18 @@
 /*button  type1*/
 .btn-4 {
 	border-radius: 50px;
-	border: 3px solid #17954c;
-	color: #17954c;
+	border: 2px solid #66cdcc;
+	color:#66cdcc;
 	overflow: hidden;
 }
 
 .btn-4:active {
-	border-color: #17954c;
+	border-color: #66cdcc;
 	color: #fff;
 }
 
 .btn-4:hover {
-	background: #24b662;
+	background: #66cdcc;
 		color: #fff;
 }
 
@@ -267,7 +267,7 @@
 }
 
 .btn-4:active:before {
-	color: #17954c;
+	color: #66cdcc;
 }
 
 /* Button 4a */
