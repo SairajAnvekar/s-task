@@ -249,7 +249,7 @@
 		<h2 class="board-heading" >Backlog</h2>
 			<div class="taskslist " id="tasks" [dragula]='"deploy"'  [dragulaModel]='sprintTask'> 
 				<div *ngFor="let task of sprintTask; let i = index"   >
-					<div *ngIf="mapTasks[task]"  class="stickyNote"><span class="badge">{{i+1}}</span> {{mapTasks[task].name}}	 <input  class='tid' type="hidden"  value={{mapTasks[task]._id}}/></div>	
+					<div *ngIf="mapTasks[task]"  class="stickyNote"><span class="badge">{{i+1}}</span> {{mapTasks[task].name}} <br>{{mapTasks[task].desc}}	 <input  class='tid' type="hidden"  value={{mapTasks[task]._id}}/></div>	
 				</div>		
 			</div>
 		</div>
@@ -266,7 +266,7 @@
 			<h2 class="board-heading"> Doing</h2>
 			<div   class="taskslist "   id="stageTask" [dragula]='"deploy"'  [dragulaModel]='stageTask'> 
 				<div *ngFor="let task of stageTask; let i = index"   >
-					<div *ngIf="mapTasks[task]" class="stickyNote" > <span class="badge">{{i+1}}</span> {{mapTasks[task].name}}	 <input  class='tid' type="hidden"  value={{mapTasks[task]._id}}/></div>	
+					<div *ngIf="mapTasks[task]" class="stickyNote" > <span class="badge">{{i+1}}</span> {{mapTasks[task].name}}	<br>{{mapTasks[task].desc}} <input  class='tid' type="hidden"  value={{mapTasks[task]._id}}/></div>	
 				</div>
 			</div>
 		</div>

@@ -317,3 +317,6 @@
 .font-60{
    font-size: 60px;
 }
+ul.nav.nav-tabs {
+    cursor: pointer;
+}

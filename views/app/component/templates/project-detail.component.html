@@ -27,7 +27,7 @@
 						</option>
 						</select>
 						    <span class="input-group-btn">
-						<button  class="btn btn-primary" (click)="addMember(member.value)" > +</button>
+						<button  class="btn btn-sucess" (click)="addMember(member.value)" > +</button>
 						    </span>
 					</div>
 			    </div>
@@ -57,12 +57,18 @@
 				<div class="row">				
 					<div class="col-sm-5 col-lg-5">
 						<label>Start Date</label> 
-						<input class="date form-control" [(ngModel)]="sprintStartDate"  ng2-datetime-picker    date-only="true" readonly />
+						<div class="input-group">
+						<input #sdate class="date form-control" [(ngModel)]="sprintStartDate"  ng2-datetime-picker    date-only="true" readonly />
+						<span  (click)="sdate.focus()" class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"  ></i></span>
+						</div>
 					</div>
 					
 					<div class="col-sm-5 col-lg-5">
 						<label>End Date</label> 
-						<input class="date form-control" [(ngModel)]="sprintEndDate"  ng2-datetime-picker    date-only="true" readonly  />
+						<div class="input-group">
+							<input #edate class="date form-control" [(ngModel)]="sprintEndDate"  ng2-datetime-picker  parse-format="YYYY-MM-DD HH:mm:ss"  date-only="true" readonly  aria-describedby="basic-addon1" />
+							<span  (click)="edate.focus()" class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+						</div>
 					</div>					
 				</div>
 				<div class="row">

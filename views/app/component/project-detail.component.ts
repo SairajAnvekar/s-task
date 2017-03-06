@@ -1,4 +1,4 @@
-import { Component ,OnInit,Input } from '@angular/core';
+import { Component ,OnInit,Input,ViewChild ,ElementRef } from '@angular/core';
 import { ProjectService } from '../services/project.service';
 import { SprintService } from '../services/sprint.service';
 import { UserService } from '../services/user.service';
@@ -18,6 +18,8 @@ import 'rxjs/add/operator/switchMap';
 	})
 export class ProjectDetailComponent implements OnInit { 
     
+	
+
     project:any={};
 	progress=" c100 green ";
 	percentage=" p45";
@@ -103,8 +105,7 @@ export class ProjectDetailComponent implements OnInit {
 		);
 	}
 	
-	addMember(member:string)
-	{
+	addMember(member:string){
 	this.projectService.addMember(this.project._id,member)
 						 .subscribe(
 						 project  =>{this.project=project[0];console.log("wwwwwwwwwwwwww");console.log(project)},
@@ -130,6 +131,7 @@ export class ProjectDetailComponent implements OnInit {
 	   });
 	}
 	
-	
+
+
 
 }

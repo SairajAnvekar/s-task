@@ -309,3 +309,11 @@ input[type=radio]:checked + label>div {
 .panel-body.task-details .row { 
     margin-top: 10px;
 }
+
+#page-wrapper > div > my-tasks1 > div.row > div.col-md-9.s-bgcolor-lightBlue > tabs > ul > li {
+    cursor:pointer;
+}
+
+ul.nav.nav-tabs {
+    cursor: pointer;
+}
