@@ -51,6 +51,29 @@ var TaskComponent1 = (function () {
                 console.log(event);
             },
         };
+        this.schedulerOptions = {
+            aspectRatio: 1,
+            defaultDate: new Date(),
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            defaultView: 'month',
+            selectable: true,
+            selectHelper: true,
+            editable: true,
+            eventLimit: true,
+            events: {
+                url: 'http://localhost:5000/scalender/sprint/58a00ec750663108341e99c3qqq',
+            },
+            eventDrop: function (event, delta) {
+                alert(event + ' was moved ' + delta + ' days\n' +
+                    '(should probably update your database)');
+                console.log("evenr");
+                console.log(event);
+            },
+        };
         this.task1 = {
             id: 1,
             name: 'Build App',
@@ -86,9 +109,6 @@ var TaskComponent1 = (function () {
         }, function (error) { return _this.errorMessage = error; });
     };
     TaskComponent1.prototype.ngAfterViewInit = function () {
-        console.log("this.sprint");
-        console.log(this.sprintId);
-        console.log(this.sprint);
         setTimeout(function () {
             // console.log("100ms after ngAfterViewInit ");
             //	$('#calendar').fullCalendar(this.calendarOptions);
@@ -108,8 +128,9 @@ var TaskComponent1 = (function () {
                 _this.getSprintDetails(_this.sprint._id);
                 _this.getMembers(_this.sprint.projectId);
                 _this.calendarOptions['events'].url = '/api/task/scalender/sprint/' + _this.sprint._id;
-                console.log(_this.calendarOptions);
+                _this.schedulerOptions['events'].url = '/api/task/scalender/sprint/' + _this.sprint._id;
                 $('#showEvents').fullCalendar(_this.calendarOptions);
+                $('#scheduler').fullCalendar(_this.schedulerOptions);
             }, function (error) { return _this.errorMessage = error; });
         });
     };

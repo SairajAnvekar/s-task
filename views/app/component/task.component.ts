@@ -55,6 +55,32 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 								console.log(event);
 			},
       };
+	  
+	 schedulerOptions:Object = {
+			aspectRatio:1,			
+			defaultDate: new Date(),
+			header:{
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			defaultView: 'month',
+			selectable: true,
+			selectHelper: true,
+			editable: true,
+			eventLimit: true, // allow "more" link when too many events
+			events: {
+			url: 'http://localhost:5000/scalender/sprint/58a00ec750663108341e99c3qqq',
+			},
+			eventDrop: function (event:any, delta:any) {
+			alert(event + ' was moved ' + delta + ' days\n' +
+			'(should probably update your database)');
+							console.log("evenr");
+								console.log(event);
+			},
+      }; 
+	  
+	  
    	
 	task1: Task ={
 					id: 1,
@@ -112,10 +138,7 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 	
 
 
-		ngAfterViewInit(){
-			console.log("this.sprint");
-			console.log(this.sprintId);
-			console.log(this.sprint);
+		ngAfterViewInit(){		  
 			setTimeout(()=>{
 			// console.log("100ms after ngAfterViewInit ");
 			//	$('#calendar').fullCalendar(this.calendarOptions);
@@ -138,8 +161,9 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 						this.getSprintDetails(this.sprint._id);
 						this.getMembers(this.sprint.projectId);
 						this.calendarOptions['events'].url='/api/task/scalender/sprint/'+this.sprint._id;
-						console.log(this.calendarOptions);
+						this.schedulerOptions['events'].url='/api/task/scalender/sprint/'+this.sprint._id;				
 						$('#showEvents').fullCalendar(this.calendarOptions);
+						$('#scheduler').fullCalendar(this.schedulerOptions);
 						},
 					error =>  this.errorMessage = <any>error
 				);
