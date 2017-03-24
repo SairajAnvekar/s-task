@@ -220,7 +220,10 @@ color:#FFF;
 
 .taskslist{
 	list-style:none;
-	height:500px; 
+    background: #eee;
+    overflow-y: auto;
+	max-height: 500px;
+    min-height: 150px;
     background: #eee;
     overflow-y: auto;
 
