@@ -96,10 +96,10 @@
 					<div class="fill"></div>
 				</div>
 			</div>
-			<div class="card-block text-center"  >
+			<div class="card-block text-center" (click)="onSelect(sprint)"  >
 			<h4 class="card-title"> <strong>{{sprint.name}}</strong></h4>
 			<p class="card-text">{{sprint.desc}}</p>
-			<button class="cbtn btn-4 btn-4a icon-arrow-right" (click)="onSelect(sprint)" >View</button>		
+			<button class="cbtn btn-4 btn-4a icon-arrow-right hideInMobile" (click)="onSelect(sprint)" >View</button>		
 			</div>
 		</div>
 	</div>	
