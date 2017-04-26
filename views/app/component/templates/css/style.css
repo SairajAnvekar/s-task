@@ -180,6 +180,7 @@ color:#FFF;
 }
 
 .stickyNote{ 
+    touch-action: none;
 	display: block;
 	padding:25px 25px 40px;
 	margin:0 auto 20px auto;
