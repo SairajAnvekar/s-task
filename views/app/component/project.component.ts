@@ -42,6 +42,7 @@ export class ProjectComponent implements OnInit   {
 						   project  =>console.log(project),
 						   error =>  this.errorMessage = <any>error);
 		this.getProjects();
+		this.cancel();
 	}
 	
 	getProjects() {

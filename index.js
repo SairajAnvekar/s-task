@@ -8,7 +8,7 @@ var bodyParser   = require('body-parser');
 var session      = require('express-session');
 var passport     = require('passport');
 var flash        = require('connect-flash');
-var Sprint		   = require('./app/models/sprint.js');
+var Sprint		 = require('./app/models/sprint.js');
 
 mongoose.connect(process.env.MONGODB||'mongodb://localhost/projectManagement');
 

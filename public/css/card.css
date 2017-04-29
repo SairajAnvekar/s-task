@@ -31,6 +31,9 @@
 
 .card-title {
     margin-bottom: 0.75rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .card-text{
    display: block;

@@ -16,12 +16,24 @@
 				</div>	
 				<div class="col-sm-6 form-group ">
 					<label>Start Date</label> 
-					<input class="date form-control" [(ngModel)]="starDate"  ng2-datetime-picker     readonly />
+					<div class="input-group">
+						<input #sdate class="date form-control" [(ngModel)]="starDate"  ng2-datetime-picker  parse-format="YYYY-MM-DD HH:mm:ss"  readonly   />
+						<span  (click)="sdate.focus()" class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+					</div>
 				</div>
 				
 				<div class="col-sm-6  form-group">
 					<label>End Date</label> 
-					<input class="date form-control" [(ngModel)]="endDate"  ng2-datetime-picker    readonly />
+					
+				     
+					 
+					 
+					 <div class="input-group">
+						<input #edate class="date form-control"  [(ngModel)]="endDate"  ng2-datetime-picker    readonly />
+						<span  (click)="edate.focus()" class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+					</div>
+				
+				
 				</div>					
 			</div>
 			<div class="col-sm-12 form-group">

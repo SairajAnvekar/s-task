@@ -37,6 +37,7 @@ var ProjectComponent = (function () {
         this.projectService.createProject(name, desc, sdate, endDate)
             .subscribe(function (project) { return console.log(project); }, function (error) { return _this.errorMessage = error; });
         this.getProjects();
+        this.cancel();
     };
     ProjectComponent.prototype.getProjects = function () {
         var _this = this;
