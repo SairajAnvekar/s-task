@@ -1,11 +1,58 @@
 
     <div id="wrapper">
+<div class="sidebar-overlay"></div>
+ <div id="sidebar-wrapper" class="side-menu " >
+     <aside id="sidebar" class="sidebar sidebar-default open" role="navigation">
+        <div class="sidebar-header header-cover" style="background-image: url(http://2.bp.blogspot.com/-2RewSLZUzRg/U-9o6SD4M6I/AAAAAAAADIE/voax99AbRx0/s1600/14%2B-%2B1%2B%281%29.jpg);">
+        <!-- Top bar -->
+        <div class="top-bar"></div>
+      
+        <!-- Sidebar brand image -->
+        <div class="sidebar-image">
+        <img src="../img/default-users.jpg">
+        </div>
+        
+        <!-- Sidebar brand name -->
+         <li class="dropdown side-dropdown">
+                    <a href="#" class="dropdown-toggle sidebar-brand" data-toggle="dropdown"><i class="fa fa-user"></i> Sairaj Anvekar<b class="caret"></b></a>
+                    <ul class="dropdown-menu side-menu-links">
+                        <li>
+                            <a routerLink="/profile"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+    </div>
+   
+   <div class="side-menu-links sidebar-nav">
+    <li class="active">
+        <a routerLink="/dashboard"> <i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+    </li>
 
+    <li>
+        <a routerLink="/tasks"><i class="fa fa-fw fa-bar-chart-o"></i> Task</a>
+    </li>
+
+    <li>
+        <a routerLink="/project"><i class="fa fa-fw fa-table"></i> project</a>
+    </li>
+</div>
+    </aside>
+        </div>
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                   <button type="button" class="navbar-toggle side-menu-toggle"  onclick="sideMenuToggle()">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -27,7 +74,7 @@
 				</li>
 			 </ul>
 			 
-            <ul class="nav navbar-right top-nav">                
+            <ul class="nav navbar-right top-nav desktop-menu">                
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu alert-dropdown">
@@ -41,7 +88,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Sairaj Anvekar<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
@@ -59,6 +106,7 @@
                         </li>
                     </ul>
                 </li>
+               
             </ul>
 
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
@@ -91,7 +139,7 @@
             <!-- /.navbar-collapse -->
         </nav>
 
-        <div id="page-wrapper">
+        <div id="page-wrapper page-content-wrapper">
 
             <div class="container-fluid">
 

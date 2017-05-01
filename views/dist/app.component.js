@@ -21,6 +21,16 @@ var AppComponent = (function () {
     AppComponent.prototype.getDate = function () {
         return this.dt && this.dt.getTime() || new Date().getTime();
     };
+    AppComponent.prototype.ngAfterViewInit = function () {
+        jQuery('.side-menu-links').on('click', function () {
+            $(".sidebar-overlay").removeClass("active");
+            $(".side-menu").removeClass("toggled");
+        });
+        jQuery('.sidebar-overlay').on('click', function () {
+            $(".sidebar-overlay").removeClass("active");
+            $(".side-menu").removeClass("toggled");
+        });
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([

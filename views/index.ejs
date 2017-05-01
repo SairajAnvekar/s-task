@@ -29,6 +29,7 @@
   
     <script src="node_modules/systemjs/dist/system.src.js"></script>-->
 <link href="https://fonts.googleapis.com/css?family=Asap|Lora|Open+Sans|Vollkorn" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"      rel="stylesheet">
   <style>
     body {
      font-family: 'Lato', sans-serif;
@@ -48,7 +49,27 @@
     <my-app><img  class="col-md-offset-6 a-margin-" src="img/loader.gif" /></my-app>
   </body>
  <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 
+<script>
+console.log("test");
+ $(".side-menu-toggle").on('click',function(e) {
+        console.log("hello");
+        $(".side-menu").toggleClass("toggled");
+    });
+
+function test(){
+
+  console.log('test122');
+}
+
+function sideMenuToggle()
+{
+   $(".side-menu").toggleClass("toggled");
+   $(".sidebar-overlay").toggleClass("active");
+
+    
+}
+</script>
 
 </html>

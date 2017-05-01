@@ -21,4 +21,19 @@ export class AppComponent {
   public getDate():number {
     return this.dt && this.dt.getTime() || new Date().getTime();
   }
+
+ngAfterViewInit() {
+    jQuery('.side-menu-links').on('click', () => {    
+     $(".sidebar-overlay").removeClass("active");
+     $(".side-menu").removeClass("toggled");
+    });
+
+   jQuery('.sidebar-overlay').on('click', () => {    
+     $(".sidebar-overlay").removeClass("active");
+     $(".side-menu").removeClass("toggled");
+    });
+
+
+}
+
 }

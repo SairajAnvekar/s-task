@@ -44,7 +44,9 @@
 }
 
 .login-image{
-    border:2px solid;
+    border:2px solid;  
+    width: 101px;
+    margin: auto;
 }
 
 .newPolls label 
