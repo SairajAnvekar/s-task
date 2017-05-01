@@ -248,10 +248,15 @@ background: #4596ea
 }
 
 @media only screen and (max-width: 767px) {
+
+  body{
+    font-family: 'Roboto', sans-serif;
+  }
 	.card{
 	display:inline-block;
-	height:120px;
+	height:114px;
 	width: 100%;
+  margin-bottom: 1px; 
 	}
 	.card > div:nth-child(1){
 	height:1px;
@@ -259,10 +264,12 @@ background: #4596ea
 	}
 	.card-title{
 	margin-top:1px;
+      width: 65%;
 	}
 
 	.a-margin> .c100{
 	margin-top: 15px;
+  margin-left: 9px;
 	}
 	.hideInMobile{
 	display:none;
@@ -273,8 +280,12 @@ background: #4596ea
 		padding-right:0px;	
 	}
 
-	container-fluid {
+	.container-fluid {
 		padding-right: 1px;
 		padding-left: 1px;
 	}
+
+  .c100.small {
+    font-size: 68px;
+}
 }

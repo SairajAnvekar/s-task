@@ -377,3 +377,7 @@ ul.alert-dropdown {
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
+.side-menu-toggle{
+ float:left;
+ margin:7px;    
+}
