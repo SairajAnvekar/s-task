@@ -20,6 +20,9 @@ var UserService = (function () {
     UserService.prototype.getUsers = function () {
         return this.http.get(this.appUrl).map(this.extractData).catch(this.handleError);
     };
+    UserService.prototype.getUsersProfile = function () {
+        return this.http.get(this.appUrl + '/profile').map(this.extractData).catch(this.handleError);
+    };
     UserService.prototype.extractData = function (res) {
         var body = res.json();
         return body.data || {};

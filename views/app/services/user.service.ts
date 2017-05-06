@@ -4,6 +4,7 @@ import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/Rx'; 
 import { Headers, RequestOptions } from '@angular/http';
+import {UserDetails} from '../models/userDetails';
 
 
 @Injectable()
@@ -13,6 +14,10 @@ private appUrl= 'api/users';  // URL to web API
       
 	getUsers (): Observable<Project[]> {
 		return this.http.get(this.appUrl).map(this.extractData).catch(this.handleError);
+	}
+
+	getUsersProfile (): Observable<UserDetails> {
+		return this.http.get(this.appUrl+'/profile').map(this.extractData).catch(this.handleError);
 	}
 	private extractData(res: Response) {	
 		let body = res.json();

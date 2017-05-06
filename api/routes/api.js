@@ -175,6 +175,17 @@ router.get('/users',function(req,res){
 		res.json({"data":doc});		  
 	});
 });
+
+
+router.get('/users/profile',isLoggedIn,function(req,res){	 
+	console.log(req.user)
+		res.json({"data":req.user});		  
+	
+});
+
+
+
+
 //end user api
 
 
@@ -441,4 +452,14 @@ router.post('/updateTask',function(req,res){
 }
 );
 
+
+function isLoggedIn(req, res, next) {
+console.log(req.user)
+    // if user is authenticated in the session, carry on 
+    if (req.isAuthenticated())
+        return next();
+ 
+    // if they aren't redirect them to the home page
+    res.json({'data':'invalid user'});
+}
 module.exports = router;
