@@ -1,10 +1,14 @@
 import {Component} from '@angular/core';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'my-app',
   templateUrl: 'views/app/appComponents.html',
+   providers: [UserService],
 })
 export class AppComponent {
+   userDetails:any={};
+  errorMessage:string;
   public dt:Date = new Date();
   private minDate:Date = null;
   private events:Array<any>;
@@ -22,6 +26,7 @@ export class AppComponent {
     return this.dt && this.dt.getTime() || new Date().getTime();
   }
 
+public constructor(private UserService:UserService) {};
 ngAfterViewInit() {
     jQuery('.side-menu-links').on('click', () => {    
      $(".sidebar-overlay").removeClass("active");
@@ -35,5 +40,17 @@ ngAfterViewInit() {
 
 
 }
+
+
+ ngOnInit(): void {	
+    this.getUsersProfile() ;
+  }
+
+  getUsersProfile() {
+		this.UserService.getUsersProfile().subscribe(
+			userDetails => this.userDetails = userDetails,
+			error =>  this.errorMessage = <any>error
+		);
+	}
 
 }
