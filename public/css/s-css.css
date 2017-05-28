@@ -317,6 +317,14 @@
 .font-60{
    font-size: 60px;
 }
+
+.font-70{
+   font-size: 70px;
+}
+
 ul.nav.nav-tabs {
     cursor: pointer;
+}
+.mrg-9{
+	margin:9px;
 }

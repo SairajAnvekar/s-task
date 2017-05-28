@@ -93,11 +93,11 @@
 <div class="">  
   <div class="panel-group list-type1" id="accordion">
     <div  *ngFor="let task of tasks; let i = index"  class="panel transparent ">
-      <div class="list ">
+      <div class="list card ">
     
           <strong><a (click)="onSelect(task)" data-toggle="collapse" data-parent="#accordion" href="#{{task._id}}  ">{{task.name | capitalize }} </a></strong>
            <span class="actions"> <span class="fa fa-trash fa-2x"  (click)="delete(task); $event.stopPropagation()" aria-hidden="true"></span> </span>
-		<div class="c100 font-60 p{{task.progress}}">
+		<div class="c100 font-60 mrg-9 p{{task.progress}}">
 				<span>{{task.progress}}%</span>
 				<div class="slice">
 					<div class="bar"></div>
