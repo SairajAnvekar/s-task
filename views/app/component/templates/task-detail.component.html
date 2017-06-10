@@ -1,0 +1,123 @@
+	<div *ngIf="selectedTask" class="task-content"> 
+			
+			<div class="row  rwo-2">
+				<div class="col-md-5">
+			
+				
+				</div>
+			</div>
+
+			<div class="row row-3">
+				<div class="col-md-12">
+				 	<label> Description	</label>			
+					<textarea [(ngModel)]="selectedTask.description"  class="form-control" id="textarea" name="textarea"></textarea>
+				</div>
+			</div>
+					
+			<div class="row row-4">
+				<div class="col-md-3">
+					<span class="textLable"> 	<label> Status </label></span>
+					<select  class="form-control" [(ngModel)]="selectedTask.status">
+					<option value="not started">Not Started</option>
+					<option value="started">Started</option>
+					<option value="completed">completed</option>
+					</select>
+				</div>
+				<div class="col-md-2">
+				 	<label>Progress</label>
+				 <input type="text" class="form-control" [(ngModel)]="selectedTask.progress"  max="100">
+				
+				</div>	
+				<div class="col-md-2">
+					<label for="type">Piority</label>
+					<select id="type" name="field4"  class="form-control" [(ngModel)]="selectedTask.priority">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					</select>				
+				</div>
+
+
+				<div class="col-md-5">
+					<label>Asign To </label>  
+					<select  class="form-control" [(ngModel)]="selectedTask.asign_to_id">
+					<option *ngFor="let member of members; let i = index"  value={{member.userid}} >	
+					{{member.name}}
+					</option>
+					</select>
+					
+                </div>
+
+				
+			</div>
+			<div class="row  row-5">
+                <div class="col-md-12">
+				<div class="col-md-5">
+					<div class="row">
+						<label > Color</label>						
+					</div>
+
+					<div class="row">
+						<div class="col-md-12" >	
+						<form action="">
+
+
+							
+							<input	type="radio" name="color" id="blue" class="input-hidden"  value="blue" [(ngModel)]="selectedTask.backgroundColor" />
+							<label for="blue">
+								<div class="box cBlue" (click)="selectedTask.backgroundColor='blue'" ></div>
+							</label>
+
+							<input 	type="radio" name="color" id="red" class="input-hidden" value="red" [(ngModel)]="selectedTask.backgroundColor"  />
+							<label for="red">
+								<div  class="box cRed"  (click)="selectedTask.backgroundColor='red'" ></div>
+							</label>
+
+							<input	type="radio" name="color" id="green" class="input-hidden"  value="green" [(ngModel)]="selectedTask.backgroundColor"/>
+							<label for="green">
+								<div class="box cGreen" (click)="selectedTask.backgroundColor='green'"></div> 
+							</label>
+
+							<input	type="radio" name="color" id="orange" class="input-hidden" value="orange" [(ngModel)]="selectedTask.backgroundColor" />
+							<label for="orange">
+							<div class="box cOrange" (click)="selectedTask.backgroundColor='orange'"></div>			
+							</label>
+						</form>
+						</div>					
+					</div>
+				</div>
+
+				<div class="col-md-7">
+                    
+					<div class="col-md-6"> 
+						<label >Start Date</label>
+						<input class="date" [(ngModel)]="selectedTask.start"  ng2-datetime-picker   readonly />
+					</div>
+					<div class="col-md-6">
+						<label >End Date</label>
+						<input class="date" [(ngModel)]="selectedTask.end"  ng2-datetime-picker   readonly/>
+					</div>
+
+				</div>
+
+
+				
+
+            </div>
+			</div>
+
+		
+
+			   <span (click)="updateTask('1')"> <button class="sbtn btn-4 btn-4a"> Update </button></span>
+			    
+			<div  class="comment-block">			
+				<div class="comments" *ngFor="let comment of selectedTask.comments; let i = index"   >
+			
+				{{comment.comment}}
+				
+				</div>
+				<input type="text" #comment>
+				<span (click)="addComment(comment.value)"> <button class="sbtn btn-4 btn-4a"> post </button></span>
+			</div>	
+			</div>

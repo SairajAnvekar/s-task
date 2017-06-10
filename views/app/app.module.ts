@@ -6,6 +6,7 @@ import { RouterModule }   from '@angular/router';
 import { DashboardComponent }   from './component/dashboard.component';
 import {ProjectComponent }   from './component/project.component';
 import {ProjectDetailComponent }   from './component/project-detail.component';
+import {TaskDetailComponent }   from './component/task-detail.component';
 import { AppComponent } from './app.component';
 import { HttpModule }    from '@angular/http';
 import { Ng2DatetimePickerModule } from 'ng2-datetime-picker';
@@ -18,7 +19,7 @@ import { DragulaModule } from 'ng2-dragula/ng2-dragula';
 import {CalendarComponent} from "angular2-fullcalendar/src/calendar/calendar";
 import {CapitalizePipe} 							from './pipe/capitalize.pipe'; 
 @NgModule({
-  declarations: [AppComponent,DashboardComponent,ProjectComponent,ProjectDetailComponent,ProfileComponent,TaskComponent1,Tabs,Tab,CalendarComponent,CapitalizePipe],
+  declarations: [AppComponent,DashboardComponent,ProjectComponent,ProjectDetailComponent,ProfileComponent,TaskComponent1,Tabs,Tab,CalendarComponent,CapitalizePipe,TaskDetailComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -38,6 +39,10 @@ import {CapitalizePipe} 							from './pipe/capitalize.pipe';
       { 
         path: 'detail/:id', 
         component: ProjectDetailComponent 
+      },
+       { 
+        path: 'taskDetail/:id', 
+        component: TaskDetailComponent 
       },
        { 
         path: 'profile', 

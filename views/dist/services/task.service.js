@@ -49,6 +49,10 @@ var TaskService = (function () {
         return this.http.delete('api/task/' + task_id).map(this.extractData).catch(this.handleError);
         ;
     };
+    TaskService.prototype.getTaskDetail = function (task_id) {
+        return this.http.get('api/task/' + task_id).map(this.extractData).catch(this.handleError);
+        ;
+    };
     TaskService.prototype.updateTaskPosition = function (_id, tid, pos, posOfWorking, posOfStage, posOfProd) {
         var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
         var options = new http_2.RequestOptions({ headers: headers });

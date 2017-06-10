@@ -54,6 +54,10 @@ private taskUrl = 'api/tasks';  // URL to web API
 		return this.http.delete('api/task/' + task_id).map(this.extractData).catch(this.handleError);;
 	}	
 
+	getTaskDetail(task_id:any):Observable<Task> {		
+		return this.http.get('api/task/' + task_id).map(this.extractData).catch(this.handleError);;
+	}	
+
 		
 	updateTaskPosition (_id: string ,tid: string, pos:number,posOfWorking:any,posOfStage:any,posOfProd:any): Observable<Task> {
 		let headers = new Headers({ 'Content-Type': 'application/json' });

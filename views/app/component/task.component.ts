@@ -9,6 +9,7 @@ import { ProjectService } 							from '../services/project.service';
 import { SprintService } 							from '../services/sprint.service';
 import { ActivatedRoute, Params }  					from '@angular/router';
 import { Location }                 				from '@angular/common';
+import { Router } 									from '@angular/router';
 import * as $ 										from 'jquery';
 import 'fullcalendar';
 
@@ -94,7 +95,7 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 		this.selectedTask = task;
 	}
 
-    public constructor(private dragulaService:DragulaService,private taskService:TaskService,private sprintService: SprintService,private userService: UserService, private projectService:ProjectService, private route: ActivatedRoute,private location: Location) {
+    public constructor(private router: Router,private dragulaService:DragulaService,private taskService:TaskService,private sprintService: SprintService,private userService: UserService, private projectService:ProjectService, private route: ActivatedRoute,private location: Location) {
 	  
 		dragulaService.dropModel.subscribe((value:any) => {
 		this.onDropModel(value.slice(1));
@@ -328,7 +329,7 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 
 		this.taskService.addTaskComment(taskId,comment)
 			.subscribe(
-				task  =>{console.log("taskaddd");console.log(task)	},
+				task  =>{ this.selectedTask=task;console.log("taskaddd");console.log(task)	},
 				error =>  this.errorMessage = <any>error);	    
 	}
 
@@ -340,7 +341,10 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 		var formatedDate=format[0]+"T"+format[1];
  		return formatedDate;
 	} 
-
+     
+	gotoDetail(): void {
+		this.router.navigate(['/taskDetail',this.selectedTask._id]);
+	}
 	
 }
 

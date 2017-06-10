@@ -58,7 +58,6 @@ var ProjectComponent = (function () {
     };
     ProjectComponent.prototype.gotoDetail = function () {
         this.router.navigate(['/detail', this.selectedProject._id]);
-        console.log("test");
     };
     ProjectComponent.prototype.showAddDetails = function () {
         this.activeAddDetails = false;

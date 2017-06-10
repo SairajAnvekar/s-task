@@ -16,11 +16,13 @@ var project_service_1 = require("../services/project.service");
 var sprint_service_1 = require("../services/sprint.service");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
+var router_2 = require("@angular/router");
 var $ = require("jquery");
 require("fullcalendar");
 var TaskComponent1 = (function () {
-    function TaskComponent1(dragulaService, taskService, sprintService, userService, projectService, route, location) {
+    function TaskComponent1(router, dragulaService, taskService, sprintService, userService, projectService, route, location) {
         var _this = this;
+        this.router = router;
         this.dragulaService = dragulaService;
         this.taskService = taskService;
         this.sprintService = sprintService;
@@ -247,12 +249,15 @@ var TaskComponent1 = (function () {
         var _this = this;
         var taskId = this.selectedTask._id;
         this.taskService.addTaskComment(taskId, comment)
-            .subscribe(function (task) { console.log("taskaddd"); console.log(task); }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (task) { _this.selectedTask = task; console.log("taskaddd"); console.log(task); }, function (error) { return _this.errorMessage = error; });
     };
     TaskComponent1.prototype.formatDate = function (date) {
         var format = date.toString().split(' ');
         var formatedDate = format[0] + "T" + format[1];
         return formatedDate;
+    };
+    TaskComponent1.prototype.gotoDetail = function () {
+        this.router.navigate(['/taskDetail', this.selectedTask._id]);
     };
     return TaskComponent1;
 }());
@@ -266,7 +271,7 @@ TaskComponent1 = __decorate([
         viewProviders: [ng2_dragula_1.DragulaService],
         providers: [task_service_1.TaskService, user_service_1.UserService, sprint_service_1.SprintService, project_service_1.ProjectService],
     }),
-    __metadata("design:paramtypes", [ng2_dragula_1.DragulaService, task_service_1.TaskService, sprint_service_1.SprintService, user_service_1.UserService, project_service_1.ProjectService, router_1.ActivatedRoute, common_1.Location])
+    __metadata("design:paramtypes", [router_2.Router, ng2_dragula_1.DragulaService, task_service_1.TaskService, sprint_service_1.SprintService, user_service_1.UserService, project_service_1.ProjectService, router_1.ActivatedRoute, common_1.Location])
 ], TaskComponent1);
 exports.TaskComponent1 = TaskComponent1;
 //# sourceMappingURL=task.component.js.map

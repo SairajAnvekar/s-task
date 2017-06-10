@@ -69,7 +69,7 @@ export class ProjectComponent implements OnInit   {
 
 	gotoDetail(): void {
 		this.router.navigate(['/detail',this.selectedProject._id]);
-		console.log("test");
+		
 	}
 	
     showAddDetails(): void{
