@@ -346,7 +346,6 @@ ul.nav.nav-tabs {
 .task-titile{
 	display:inline-block;
 	width:70%;
-	overflow: hidden;
     height: 80%;
 	text-overflow: ellipsis;
 }
