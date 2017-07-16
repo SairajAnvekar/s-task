@@ -1,9 +1,7 @@
 	<div *ngIf="selectedTask" class="task-content"> 
 			
 			<div class="row  rwo-2">
-				<div class="col-md-5">
-			
-				
+				<div class="col-md-5">			
 				</div>
 			</div>
 
@@ -105,19 +103,37 @@
 				
 
             </div>
+			 <span (click)="updateTask('1')"> <button class="sbtn btn-4 btn-4a"> Update </button></span>
 			</div>
 
 		
-
-			   <span (click)="updateTask('1')"> <button class="sbtn btn-4 btn-4a"> Update </button></span>
-			    
-			<div  class="comment-block">			
-				<div class="comments" *ngFor="let comment of selectedTask.comments; let i = index"   >
+	    
+			<div  class="comment-block col-md-10">			
+				<div class="comments row post" *ngFor="let comment of selectedTask.comments; let i = index"   >
 			
-				{{comment.comment}}
-				
+			     <div class="post-heading"  >
+					  <div class="pull-left image">
+                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                    </div>
+                    <div class="pull-left meta">
+                        <div class="title h5">
+                            <a href="#"><b>Ryan Haywood</b></a>
+                            made a post.
+                        </div>
+                        <h6 class="text-muted time">1 minute ago</h6>
+                    </div>
+
+					 <div class="post-description" > 
+						<p>{{comment.comment}}</p>                  
+                     </div>		
+			     </div>				
 				</div>
-				<input type="text" #comment>
-				<span (click)="addComment(comment.value)"> <button class="sbtn btn-4 btn-4a"> post </button></span>
+				<div class="row">
+					<div class="col-md-10">
+						<textarea #comment class="form-control"></textarea>					
+					</div>
+
+					<span (click)="addComment(comment.value)"> <button class="sbtn btn-4 btn-4a"> post </button></span>
+				</div>
 			</div>	
 			</div>

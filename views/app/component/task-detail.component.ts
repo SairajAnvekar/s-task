@@ -16,6 +16,7 @@ import { TaskService } 								from '../services/task.service';
 export class TaskDetailComponent implements OnInit  {
 
  selectedTask:any;
+ errorMessage: string;
 
 public constructor(private router: Router, private route: ActivatedRoute,private taskService:TaskService) {}	
 
@@ -45,6 +46,16 @@ ngOnInit(): void {
     },
     error => "" );	
     }
+
+
+	addComment(comment:any): void {			
+		var taskId=this.selectedTask._id;
+
+		this.taskService.addTaskComment(taskId,comment)
+			.subscribe(
+				task  =>{ this.selectedTask=task;console.log("taskaddd");console.log(task)	},
+				error =>  this.errorMessage = <any>error);	    
+	}
 
 
    

@@ -328,3 +328,28 @@ ul.nav.nav-tabs {
 .mrg-9{
 	margin:9px;
 }
+
+/*comment and post*/
+.post .post-description{
+	clear:both;
+	margin:20px;
+}
+.avatar{
+    width: 61%;
+    padding: 6px;
+}
+.comment-block {
+	border: 1px solid grey;
+    padding: 18px;
+	border-radius:10px;
+}
+.task-titile{
+	display:inline-block;
+	width:70%;
+	overflow: hidden;
+    height: 80%;
+	text-overflow: ellipsis;
+}
+.task-titile .desc{
+	color:darkgrey;
+}

@@ -93,10 +93,13 @@
 <div class="">  
   <div class="panel-group list-type1" id="accordion">
     <div  *ngFor="let task of tasks; let i = index"  class="panel transparent ">
-      <div class="list card ">
-    
-          <strong><a (click)="onSelect(task)" data-toggle="collapse" data-parent="#accordion" href="#{{task._id}}  ">{{task.name | capitalize }} </a></strong>
-           <span class="actions"> <span class="fa fa-trash fa-2x"  (click)="delete(task); $event.stopPropagation()" aria-hidden="true"></span> </span>
+      <div class="list card ">    
+		
+		<div class="task-titile">
+		<strong><a (click)="onSelect(task)" data-toggle="collapse" data-parent="#accordion" href="#{{task._id}}  ">{{task.name | capitalize }} </a></strong>
+        <div class="desc">{{task.description}}</div>
+		</div>
+	    <span class="actions"> <span class="fa fa-trash fa-2x"  (click)="delete(task); $event.stopPropagation()" aria-hidden="true"></span> </span>
 		<div class="c100 font-60 mrg-9 p{{task.progress}}">
 				<span>{{task.progress}}%</span>
 				<div class="slice">
@@ -220,7 +223,7 @@
 
 			   <span (click)="updateTask('1')"> <button class="sbtn btn-4 btn-4a"> Update </button></span>
 			    <span (click)="gotoDetail()"> <button class="sbtn btn-4 btn-4a"> More </button></span>   
-			<div  class="comment-block">			
+			<div  class="comment-block" style="display:none">			
 				<div class="comments" *ngFor="let comment of selectedTask.comments; let i = index"   >
 			
 				{{comment.comment}}

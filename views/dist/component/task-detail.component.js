@@ -38,6 +38,12 @@ var TaskDetailComponent = (function () {
             _this.selectedTask = task;
         }, function (error) { return ""; });
     };
+    TaskDetailComponent.prototype.addComment = function (comment) {
+        var _this = this;
+        var taskId = this.selectedTask._id;
+        this.taskService.addTaskComment(taskId, comment)
+            .subscribe(function (task) { _this.selectedTask = task; console.log("taskaddd"); console.log(task); }, function (error) { return _this.errorMessage = error; });
+    };
     return TaskDetailComponent;
 }());
 TaskDetailComponent = __decorate([
