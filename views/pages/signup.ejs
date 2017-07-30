@@ -1,29 +1,32 @@
-<!-- views/signup.ejs -->
+<!-- views/login.ejs -->
 <!doctype html>
 <html>
 
 <head>
-    <title>Sign Up</title>
+    <title>S-Taks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <!-- load fontawesome -->
     <link rel="stylesheet" href="css/style.css">
 
-        <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/animate.css">
 
+	
 </head>
 
-<body>
-    <div class="wrapper" style="background: url(img/grad-bg.png) no-repeat center center/cover #b1d7ea; ">
-   
-    <div class="container" >
+<body style="background: url(img/grad-bg.png) no-repeat center center/cover #b1d7ea; ">
+    <div class="wrapper" >
+     <div class="brand"></div>
+    <div class="container" style="margin-top:50px; position:relative">
 
-        <div class="col-sm-5 col-sm-offset-3   animated bounceInDown " style="margin-top:25px; position:relative" id="signupform">
-            
-            <div class="col-sm-9  col-sm-offset-1 color-grey">
-            <h1 class="col-sm-offset-3 " > Signup</h1>
-
+        <div class="col-sm-6 col-sm-offset-2 color-grey" id="signinform">
+        <div class="row">
+            <div class="col-md-12  ">
+             <div class=" title col-sm-12 " style="margin-left: 25%" ><h1>Sign Up </h1></div>
+            <h1><img alt="Avatar" class="img-circle col-md-offset-3 img-responsive login-image" src="/img/default-users.jpg"></h1>
+             
             <!-- show any messages that come back with authentication -->
             <% if (message.length > 0) { %>
                 <div class="alert alert-danger">
@@ -32,8 +35,8 @@
                 <% } %>
 
                     <!-- LOGIN FORM -->
-
-                    <form action="/signup" method="post">
+                
+                        <form action="/signup" method="post">
 
                          <div class="form-group">
                             <label>First Name</label>
@@ -62,15 +65,21 @@
 
                         <button type="submit" class="btn btn-success btn-lg">Signup</button>
                     </form>
+                    </div>      
+                 </div>
+                    <div class="row">
+                          <div class="col-md-10 col-md-offset-1">
+                            <p>Need an account? <a href="/signup">Signup</a></p>
+                            <p>Or go <a href="/">home</a>.</p>
+                        </div>
                     </div>
-           
 
         </div>
 
     </div>
-   
-        </div>
 
+
+        </div>
 </body>
 
 </html>

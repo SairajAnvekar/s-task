@@ -177,7 +177,7 @@ var TaskComponent1 = (function () {
             };
             console.log("task");
             console.log(task);
-            $('#showEvents').fullCalendar('refetchEvents');
+            // $('#showEvents').fullCalendar( 'refetchEvents' );
         }, function (error) { return _this.errorMessage = error; });
     };
     TaskComponent1.prototype.delete = function (task) {

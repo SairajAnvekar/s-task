@@ -221,7 +221,7 @@ export class TaskComponent1 implements OnInit , AfterViewInit{
 															'name':task['name'],
 															'status':task['status']	};
 															console.log("task");console.log(task);
-															 $('#showEvents').fullCalendar( 'refetchEvents' );
+															// $('#showEvents').fullCalendar( 'refetchEvents' );
 							},
 					   error =>  this.errorMessage = <any>error);	
 	}
